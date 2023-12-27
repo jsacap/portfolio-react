@@ -9,7 +9,8 @@ const ArticlePage = () => {
   const [article, setArticle] = useState(null);
 
   useEffect(() => {
-    const apiUrl = `http://localhost:8000/blog/api/${id}/`; 
+    // const apiUrl = `http://localhost:8000/blog/api/${id}/`; 
+    const apiUrl = `https://jsax-production.up.railway.app/blog/api/${id}/`; 
     axios.get(apiUrl)
       .then(response => {
         setArticle(response.data);
@@ -24,7 +25,7 @@ const ArticlePage = () => {
   }
   
   const { title, created, content } = article;
-  const coverPhotoUrl = `http://localhost:8000${article.cover_photo}`;
+  const coverPhotoUrl = `https://jsax-production.up.railway.app/${article.cover_photo}`;
 
   const formattedDate = new Date(created).toLocaleDateString('en-US', {
     year: 'numeric',
