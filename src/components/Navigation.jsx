@@ -22,9 +22,9 @@ export function Navigation() {
           <Nav.Link href="blog/">Market Insights</Nav.Link>
         </Nav>
         <Nav>
+            {isLoggedIn() && <Nav.Link href='/post'>New Project Post</Nav.Link>}
             {isLoggedIn() ? <Nav.Link href='/logout'>Logout</Nav.Link> : <Nav.Link href="/login" className='brand-padding'>Login</Nav.Link>}
             
-            {isLoggedIn() && <Nav.Link href='/post'>New Project Post</Nav.Link>}
           
         </Nav>
       </Navbar>
