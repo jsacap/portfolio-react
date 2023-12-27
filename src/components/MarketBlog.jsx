@@ -27,7 +27,6 @@ const MarketBlog = () => {
         <p className='col-md-6'>On this page, you will find a collection of market-related articles. These articles consist of my own observations and research, which combine both fundamental and technical analysis for various markets.</p>
       <div className='jsa__blog-page-container'>
         {articles.map((article, index) => {
-console.log(article.tags)
 
           return (
             <div key={article.id}>

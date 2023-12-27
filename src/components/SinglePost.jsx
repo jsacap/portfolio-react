@@ -35,7 +35,6 @@ const SinglePost = ({ id, title, coverPhoto, tags, content }) => {
         <div className='gradient__text'>
           <div>
           {Array.isArray(tags) && tags.map(tag => {
-  console.log('Tag:', typeof(tag));
   return (
     <li key={tag.name} className='btn tag-button'>{tag.name}</li>
   );

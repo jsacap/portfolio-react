@@ -22,7 +22,6 @@ const PostForm = () => {
           setTitle(postData.title);
           setContent(postData.content);
           setTags(postData.tags);          
-          console.log(postData.tags);
         } catch (error) {
           console.error('Failed fetching data for post', error)
         }
@@ -52,7 +51,6 @@ const PostForm = () => {
       // const url = id ? `http://localhost:8000/post/${id}/` : 'http://localhost:8000/post/';
       const url = id ? `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/` : 'https://portfolio-backend-production-sanchojralegre.up.railway.app/post/';
       const method = id ? 'put' : 'post';
-        console.log('form data', formData)
       const response = await axios[method](url, formData, {
         headers: {
           'Authorization': `JWT ${localStorage.getItem('accessToken')}`,
@@ -60,7 +58,6 @@ const PostForm = () => {
         },
       });
   
-      console.log('API Response:', response.data);
       navigate('/');
       console.log(id ? 'Post Updated:' : 'Post Created', response.data);
     } catch (error) {

@@ -12,7 +12,8 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/auth/jwt/create/', {
+      // const response = await axios.post('http://localhost:8000/auth/jwt/create/', {
+      const response = await axios.post('https://portfolio-backend-production-sanchojralegre.up.railway.app/auth/jwt/create/', {
         username,
         password,
       });
