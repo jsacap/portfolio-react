@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const instance = axios.create({
-  // baseURL: 'http://localhost:8000'
-  baseURL: 'https://portfolio-backend-production-sanchojralegre.up.railway.app'
+  baseURL: 'http://localhost:8000'
+  // baseURL: 'https://portfolio-backend-production-sanchojralegre.up.railway.app'
 });
 
 instance.interceptors.request.use(
@@ -24,8 +24,8 @@ export default instance
 const refreshAccessToken = async () => {
   try {
     const refresh_token = localStorage.getItem('refreshToken');
-    // const response = await axios.post('http://localhost:8000/auth/jwt/refresh', {
-    const response = await axios.post('https://portfolio-backend-production-sanchojralegre.up.railway.app/auth/jwt/refresh', {
+    const response = await axios.post('http://localhost:8000/auth/jwt/refresh', {
+    // const response = await axios.post('https://portfolio-backend-production-sanchojralegre.up.railway.app/auth/jwt/refresh', {
       refresh: refresh_token,      
     });
 

@@ -7,8 +7,8 @@ const PostsList = () => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    // const apiUrl = 'http://localhost:8000/post';
-    const apiUrl = 'https://portfolio-backend-production-sanchojralegre.up.railway.app/post';
+    const apiUrl = 'http://localhost:8000/post';
+    // const apiUrl = 'https://portfolio-backend-production-sanchojralegre.up.railway.app/post';
     axios.get(apiUrl)
       .then(response => {
         setArticles(response.data);

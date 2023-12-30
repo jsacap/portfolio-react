@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MarketBlogArticle from './MarketBlogArticle'
 import axios from 'axios';
 import parse from 'html-react-parser';
+import { Spinner } from 'react-bootstrap';
 
 const MarketBlog = () => {
   const [articles, setArticles] = useState([]);
@@ -18,6 +19,8 @@ const MarketBlog = () => {
         console.error('Failed to fetch data', error);
       });
   }, []);
+
+  
 
   return (
     <div className='jsa__blog-page'>

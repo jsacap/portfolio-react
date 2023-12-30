@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Spinner } from '@chakra-ui/react';
+
 
 const SinglePostPage = () => {
   const { id } = useParams();
@@ -10,8 +12,8 @@ const SinglePostPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // const apiUrl = `http://localhost:8000/post/${id}/`;
-    const apiUrl = `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/`;
+    const apiUrl = `http://localhost:8000/post/${id}/`;
+    // const apiUrl = `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/`;
     axios
       .get(apiUrl)
       .then(response => {
@@ -30,8 +32,8 @@ const SinglePostPage = () => {
   useEffect(() => {
     const fetchPostData = async () => {
       try {
-        // const response = await axios.get(`http://localhost:8000/post/${id}/`);
-        const response = await axios.get(`https://portfolio-backend-production-sanchojralegre.up.railway.app/${id}/`);
+        const response = await axios.get(`http://localhost:8000/post/${id}/`);
+        // const response = await axios.get(`https://portfolio-backend-production-sanchojralegre.up.railway.app/${id}/`);
         setPostData(response.data);
       } catch (error) {
         console.error('Error Fetching Post Data', error);
@@ -49,8 +51,8 @@ const SinglePostPage = () => {
         const accessToken = localStorage.getItem('accessToken');
         if (postData && postData.id) {
           const response = await axios.delete(
-            // `http://localhost:8000/post/${postData.id}/delete_post/`, 
-            `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${postData.id}/delete_post/`, 
+            `http://localhost:8000/post/${postData.id}/delete_post/`, 
+            // `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${postData.id}/delete_post/`, 
             {
               headers: {
                 'Authorization': `JWT ${accessToken}`,
@@ -72,8 +74,10 @@ const SinglePostPage = () => {
     }
   };
 
-  if (!article) {
-    return <div>Loading...</div>;
+  if (!article) {    
+    return <div className='jsa__articlepage'>
+      <Spinner />;
+      </div>
   }
 
   const { title, content } = article;
@@ -83,6 +87,7 @@ const SinglePostPage = () => {
     <div className='jsa__articlepage'>
       <img src={coverPhotoUrl} alt='Article cover photo' />
       <h1>{title}</h1>
+      {/* <p>{tags}</p> */}
       <div className='jsa__articlepage-content'>
         <div dangerouslySetInnerHTML={{ __html: content }} />
       </div>

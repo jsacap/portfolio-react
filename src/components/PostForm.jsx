@@ -16,8 +16,8 @@ const PostForm = () => {
     if (id) {
       const fetchPostData = async () => {
         try {
-          // const response = await axios.get(`http://localhost:8000/post/${id}/`);
-          const response = await axios.get(`https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/`);
+          const response = await axios.get(`http://localhost:8000/post/${id}/`);
+          // const response = await axios.get(`https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/`);
           const postData = response.data;
           setTitle(postData.title);
           setContent(postData.content);
@@ -42,14 +42,19 @@ const PostForm = () => {
       const formData = new FormData();
       formData.append('title', title);
       formData.append('content', content);
-      formData.append('tags', JSON.stringify(tags.map(tag => ({ name: tag.name }))));
+      tags.forEach((tag, index) => {
+        formData.append(`tags[${index}]`, tag);
+      });
+      
   
       if (coverPhoto) {
         formData.append('cover_photo', coverPhoto);
       }
+      console.log('Tags before sending:', tags);
+      console.log('form data', formData)
   
-      // const url = id ? `http://localhost:8000/post/${id}/` : 'http://localhost:8000/post/';
-      const url = id ? `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/` : 'https://portfolio-backend-production-sanchojralegre.up.railway.app/post/';
+      const url = id ? `http://localhost:8000/post/${id}/` : 'http://localhost:8000/post/';
+      // const url = id ? `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/` : 'https://portfolio-backend-production-sanchojralegre.up.railway.app/post/';
       const method = id ? 'put' : 'post';
       const response = await axios[method](url, formData, {
         headers: {
@@ -80,7 +85,8 @@ const PostForm = () => {
       <br />
       <label>
   Tags:
-  <input type="text" value={tags.join(', ')} onChange={(e) => setTags(e.target.value.split(',').map(tag => tag.trim()))} />
+  <input type="text" value={tags.join(', ')} onChange={(e) => setTags(e.target.value.split(',').map(tag => tag.trim()))}
+ />
 
 </label>
 

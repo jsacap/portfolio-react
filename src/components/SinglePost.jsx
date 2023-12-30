@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { Badge } from '@chakra-ui/react';
 
 
 const SinglePost = ({ id, title, coverPhoto, tags, content }) => {
@@ -32,15 +33,17 @@ const SinglePost = ({ id, title, coverPhoto, tags, content }) => {
           <h3>{title}</h3>
           {content}
         </div>
-        <div className='gradient__text'>
+        
           <div>
-          {Array.isArray(tags) && tags.map(tag => {
-  return (
-    <li key={tag.name} className='btn tag-button'>{tag.name}</li>
-  );
+            {Array.isArray(tags) && tags.map(tag => {
+              return (
+                <Badge key={tag.name} borderRadius='full' px='2' colorScheme='light' bg={'teal'} mr={2} mb={2}>
+                  {tag.name}
+                </Badge>
+                );
 })}
 
-          </div>
+          
         </div>
       </div>
     </div>
