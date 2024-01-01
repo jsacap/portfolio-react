@@ -8,10 +8,12 @@ import PostPage from './components/PostPage';
 import PostsList from './components/PostList';
 import SinglePostPage from './components/SinglePostPage.jsx';
 import MarketBlog from './components/MarketBlog.jsx';
+import ArticlePage from './components/MarketBlogArticlePage.jsx';
 import './styles/styles.css';
 import './interceptor/Axios.jsx';
 import SandBox from './components/SandBox.jsx';
-import Tags from './components/Tags.jsx';
+
+import TagsPage from './components/Tags/TagPage.jsx';
 import { ChakraProvider } from '@chakra-ui/react';
 
 function App() {
@@ -31,9 +33,10 @@ function App() {
           <Route path="/postlist" element={<PostsList />} /> 
           <Route path="/blog/article/:id" element={<SinglePostPage />} />
           <Route path="/edit-post/:id?" element={<PostPage isEditing />} />
-          <Route path="/blog" element={<MarketBlog />} />
+          <Route path="/marketblog/article/:id" element={<ArticlePage />} />
+          <Route path="/marketblog" element={<MarketBlog />} />
           <Route path="/test" element={<SandBox />} />
-          <Route path="/tags" element={<Tags />} />
+          <Route path="/tags" element={<TagsPage />} />
 
         </Routes>
       </div>

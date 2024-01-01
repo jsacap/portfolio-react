@@ -3,6 +3,7 @@ import MarketBlogArticle from './MarketBlogArticle'
 import axios from 'axios';
 import parse from 'html-react-parser';
 import { Spinner } from 'react-bootstrap';
+import { Badge } from '@chakra-ui/react';
 
 const MarketBlog = () => {
   const [articles, setArticles] = useState([]);
@@ -39,7 +40,7 @@ const MarketBlog = () => {
                 title={article.title}
                 created={article.created}
                 content={parse(`${article.content.slice(0, 300)}...`)}
-                tags={article.tags.map(tag => tag.name).join('  ')}
+                tags={article.tags}
               />
               
             </div>

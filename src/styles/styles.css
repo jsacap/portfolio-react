@@ -430,10 +430,19 @@
     font-size: 16px;
     line-height: 30px;
     padding: 2rem;
+    
+    
 }
 
 .jsa__articlepage-content p {
     margin-bottom: 2rem;
+    
+}
+
+.jsa__articlepage-content img {
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: center;
 
 }
 .jsa__articlepage-date {

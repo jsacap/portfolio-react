@@ -3,7 +3,6 @@ import axios from 'axios';
 import Editor from './Editor';
 import { useParams, useNavigate } from 'react-router-dom';
 
-
 const PostForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -11,19 +10,19 @@ const PostForm = () => {
   const [content, setContent] = useState('');
   const [tags, setTags] = useState([]);
   const [coverPhoto, setCoverPhoto] = useState(null);
+  const [selectedTags, setSelectedTags] = useState([]);
 
   useEffect(() => {
     if (id) {
       const fetchPostData = async () => {
         try {
           const response = await axios.get(`http://localhost:8000/post/${id}/`);
-          // const response = await axios.get(`https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/`);
           const postData = response.data;
           setTitle(postData.title);
           setContent(postData.content);
-          setTags(postData.tags);          
+          setTags(postData.tags);
         } catch (error) {
-          console.error('Failed fetching data for post', error)
+          console.error('Failed fetching data for post', error);
         }
       };
       fetchPostData();
@@ -37,24 +36,20 @@ const PostForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const formData = new FormData();
       formData.append('title', title);
       formData.append('content', content);
-      tags.forEach((tag, index) => {
+      selectedTags.forEach((tag, index) => {
         formData.append(`tags[${index}]`, tag);
       });
-      
-  
+
       if (coverPhoto) {
         formData.append('cover_photo', coverPhoto);
       }
-      console.log('Tags before sending:', tags);
-      console.log('form data', formData)
-  
+
       const url = id ? `http://localhost:8000/post/${id}/` : 'http://localhost:8000/post/';
-      // const url = id ? `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/` : 'https://portfolio-backend-production-sanchojralegre.up.railway.app/post/';
       const method = id ? 'put' : 'post';
       const response = await axios[method](url, formData, {
         headers: {
@@ -62,14 +57,33 @@ const PostForm = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-  
+
       navigate('/');
       console.log(id ? 'Post Updated:' : 'Post Created', response.data);
     } catch (error) {
       console.error('Error creating post:', error);
     }
   };
-  
+
+  // Fetch tags and set them to the state
+  useEffect(() => {
+    const fetchTags = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/tags/');
+        setTags(response.data);
+      } catch (error) {
+        console.error('Failed fetching tags', error);
+      }
+    };
+    fetchTags();
+  }, []);
+
+  const handleTagCheckboxChange = (tag) => {
+    // If the tag is already selected, remove it; otherwise, add it
+    setSelectedTags((prevTags) =>
+      prevTags.includes(tag) ? prevTags.filter((t) => t !== tag) : [...prevTags, tag]
+    );
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -84,14 +98,20 @@ const PostForm = () => {
       </label>
       <br />
       <label>
-  Tags:
-  <input type="text" value={tags.join(', ')} onChange={(e) => setTags(e.target.value.split(',').map(tag => tag.trim()))}
- />
-
-</label>
-
-
-
+        Tags:
+        {tags.map((tag) => (
+          <div key={tag.id}>
+            <input
+              type="checkbox"
+              id={`tag-${tag.id}`}
+              value={tag.id}
+              checked={selectedTags.includes(tag.id)}
+              onChange={() => handleTagCheckboxChange(tag.id)}
+            />
+            <label htmlFor={`tag-${tag.id}`}>{tag.name}</label>
+          </div>
+        ))}
+      </label>
       <br />
       <label>
         Cover Photo:

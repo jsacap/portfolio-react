@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import React from 'react';
+import { Badge } from '@chakra-ui/react'; // Add this import
 
 const MarketBlogArticlePage = ({ id, coverPhoto, title, created, content, tags }) => {
   const navigate = useNavigate();
@@ -14,18 +15,18 @@ const MarketBlogArticlePage = ({ id, coverPhoto, title, created, content, tags }
       content: typeof content === 'string' ? content : undefined,
     };
 
-    navigate(`/blog/article/${id}`, { state: articleDetails });
+    navigate(`/marketblog/article/${id}`, { state: articleDetails });
   };
 
   const formattedDate = new Date(created).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
-  })
+  });
 
   return (
-    <div className='jsa__blog-container_article' onClick={handleClick}>
-      <div className='jsa__blog-container_article-image'>
+    <div className='jsa__blog-container_article'>
+      <div className='jsa__blog-container_article-image' onClick={handleClick}>
         <img src={coverPhoto} alt='Article Cover Photo' />
       </div>
       <div className='jsa__blog-container_article-content'>
@@ -33,12 +34,12 @@ const MarketBlogArticlePage = ({ id, coverPhoto, title, created, content, tags }
           <h3>{title}</h3>
           <p>Written on - {formattedDate}</p>
           {content}
+          {Array.isArray(tags) && tags.map(tag => (
+            <Badge key={tag.name} borderRadius='full' px='2' colorScheme='light' bg={'teal'} mr={2} mb={2}>
+              {tag.name}
+            </Badge>
+          ))}
         </div>
-        <div className='gradient__text'>
-        <h4>TAGS</h4>
-        <h5>{tags}</h5>
-        </div>
-          
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-import './articlePage.css';
 import React, { useState, useEffect } from 'react';
 import parse from 'html-react-parser';
 import { useParams } from 'react-router-dom';
