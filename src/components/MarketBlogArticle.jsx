@@ -25,8 +25,8 @@ const MarketBlogArticlePage = ({ id, coverPhoto, title, created, content, tags }
   });
 
   return (
-    <div className='jsa__blog-container_article'>
-      <div className='jsa__blog-container_article-image' onClick={handleClick}>
+    <div className='jsa__blog-container_article' onClick={handleClick}>
+      <div className='jsa__blog-container_article-image'>
         <img src={coverPhoto} alt='Article Cover Photo' />
       </div>
       <div className='jsa__blog-container_article-content'>

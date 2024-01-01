@@ -24,7 +24,7 @@ const ArticlePage = () => {
   }
   
   const { title, created, content } = article;
-  const coverPhotoUrl = `https://jsax-production.up.railway.app/${article.cover_photo}`;
+  const coverPhotoUrl = `https://jsax-production.up.railway.app${article.cover_photo}`;
 
   const formattedDate = new Date(created).toLocaleDateString('en-US', {
     year: 'numeric',
