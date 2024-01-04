@@ -41,7 +41,7 @@ const PostForm = () => {
       const postDataToSend = {
         title,
         content,
-        tags: tags.map(tag => ({ name: tag })),
+        tags,
         cover_photo: coverPhoto
       };
       console.log(postDataToSend)
@@ -78,8 +78,15 @@ const PostForm = () => {
       <br />
       <label>
         Tags:
-        <input type='text' value={tags.join(', ')} 
-        onChange={(e) => setTags(e.target.value.split(', '))} />
+        <input
+          type='text'
+          value={tags.map(tag => tag.name).join(', ')}
+          onChange={(e) => {
+            const tagNames = e.target.value.split(', ');
+            const tagObjects = tagNames.map(tagName => ({ name: tagName }));
+            setTags(tagObjects);
+          }}
+        />
       </label>
       <br />
       <label>
