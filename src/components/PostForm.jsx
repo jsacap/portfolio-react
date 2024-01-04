@@ -20,7 +20,7 @@ const PostForm = () => {
           const postData = response.data;
           setTitle(postData.title);
           setContent(postData.content);
-          setTags(postData.tags);
+          setTags(postData.tags.map(tag => tag.name));
         } catch (error) {
           console.error('Failed fetching data for post', error);
         }
@@ -36,54 +36,33 @@ const PostForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     try {
-      const formData = new FormData();
-      formData.append('title', title);
-      formData.append('content', content);
-      selectedTags.forEach((tag, index) => {
-        formData.append(`tags[${index}]`, tag);
-      });
-
-      if (coverPhoto) {
-        formData.append('cover_photo', coverPhoto);
-      }
-
+      const postDataToSend = {
+        title,
+        content,
+        tags: tags.map(tag => ({ name: tag })),
+        cover_photo: coverPhoto
+      };
+      console.log(postDataToSend)
+  
       const url = id ? `http://localhost:8000/post/${id}/` : 'http://localhost:8000/post/';
       const method = id ? 'put' : 'post';
-      const response = await axios[method](url, formData, {
+  
+      const response = await axios[method](url, postDataToSend, {
         headers: {
           'Authorization': `JWT ${localStorage.getItem('accessToken')}`,
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       });
-
+  
       navigate('/');
       console.log(id ? 'Post Updated:' : 'Post Created', response.data);
     } catch (error) {
       console.error('Error creating post:', error);
     }
   };
-
-  // Fetch tags and set them to the state
-  useEffect(() => {
-    const fetchTags = async () => {
-      try {
-        const response = await axios.get('http://localhost:8000/tags/');
-        setTags(response.data);
-      } catch (error) {
-        console.error('Failed fetching tags', error);
-      }
-    };
-    fetchTags();
-  }, []);
-
-  const handleTagCheckboxChange = (tag) => {
-    // If the tag is already selected, remove it; otherwise, add it
-    setSelectedTags((prevTags) =>
-      prevTags.includes(tag) ? prevTags.filter((t) => t !== tag) : [...prevTags, tag]
-    );
-  };
+  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -99,18 +78,8 @@ const PostForm = () => {
       <br />
       <label>
         Tags:
-        {tags.map((tag) => (
-          <div key={tag.id}>
-            <input
-              type="checkbox"
-              id={`tag-${tag.id}`}
-              value={tag.id}
-              checked={selectedTags.includes(tag.id)}
-              onChange={() => handleTagCheckboxChange(tag.id)}
-            />
-            <label htmlFor={`tag-${tag.id}`}>{tag.name}</label>
-          </div>
-        ))}
+        <input type='text' value={tags.join(', ')} 
+        onChange={(e) => setTags(e.target.value.split(', '))} />
       </label>
       <br />
       <label>
