@@ -14,6 +14,9 @@
   --color-subtext: #FF8A71;
 }
 
+.box {
+    border: white solid;
+}
 
 .jsa__blog-page {
     color: #fff;
@@ -33,8 +36,8 @@
 }
 
 .jsa__header-content {
-    flex: 1;
-    display: flex;
+    /* flex: 1;
+    display: flex; */
     justify-content: center;
     align-items: center;
     margin: 10rem;
@@ -68,7 +71,7 @@
 .jsa__header-content {
     flex: 1;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;  /* Center vertically */
     margin-bottom: 5rem;
 }

@@ -8,9 +8,16 @@ const PostForm = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [tags, setTags] = useState([]);
   const [coverPhoto, setCoverPhoto] = useState(null);
-  const [selectedTags, setSelectedTags] = useState([]);
+  const [tags, setTags] = useState([]);
+
+  const updateTags = (tagString) => {
+    const tagsArray = tagString.split(',').map(tag => ({ name: tag.trim() }));
+    setTags([...tagsArray]); // Ensure tags is directly an array of objects
+  };
+  
+  
+  
 
   useEffect(() => {
     if (id) {
@@ -38,21 +45,25 @@ const PostForm = () => {
     e.preventDefault();
   
     try {
-      const postDataToSend = {
-        title,
-        content,
-        tags,
-        cover_photo: coverPhoto
-      };
-      console.log(postDataToSend)
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('content', content);
+      console.log(tags);
+      formData.append('tags', JSON.stringify(tags.map(tag => tag.name)));
+
+            
+  
+      if (coverPhoto) {
+        formData.append('cover_photo', coverPhoto);
+      }
   
       const url = id ? `http://localhost:8000/post/${id}/` : 'http://localhost:8000/post/';
       const method = id ? 'put' : 'post';
   
-      const response = await axios[method](url, postDataToSend, {
+      const response = await axios[method](url, formData, {
         headers: {
           'Authorization': `JWT ${localStorage.getItem('accessToken')}`,
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
       });
   
@@ -62,6 +73,7 @@ const PostForm = () => {
       console.error('Error creating post:', error);
     }
   };
+  
   
 
   return (
@@ -81,11 +93,7 @@ const PostForm = () => {
         <input
           type='text'
           value={tags.map(tag => tag.name).join(', ')}
-          onChange={(e) => {
-            const tagNames = e.target.value.split(', ');
-            const tagObjects = tagNames.map(tagName => ({ name: tagName }));
-            setTags(tagObjects);
-          }}
+          onChange={(e) => updateTags(e.target.value)}
         />
       </label>
       <br />

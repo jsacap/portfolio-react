@@ -23,7 +23,7 @@ const PostsList = () => {
       <div className='jsa__header-content mb-2 col-md-6'>
         <h1 className='mt-3'>Projects</h1>
       </div>
-      <p className='col-md-6 text-center'>
+      <p className='col-md-6 text-left'>
         This page showcases my work as a full-stack developer. Here, you'll find a collection of projects that I've created using different programming languages. To me, a project is more than just code; it's about solving problems and making our lives easier. 
         Each project I work on has a specific goal in mind, to address a challenge and improve efficiency in my personal pursuits. This focus allows me to be creative in finding innovative solutions and apply the knowledge I've gained throughout my career. <br />
         Every project is like a puzzle, combining different skills, methods, and technologies that I've learned over time. It's exciting to see these elements come together and create something functional and impactful.
