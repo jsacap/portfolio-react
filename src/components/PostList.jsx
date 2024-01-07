@@ -37,7 +37,7 @@ const PostsList = () => {
               coverPhoto={article.cover_photo || 'default_image_url'}
               title={article.title}
               content={parse(`${article.content.slice(0, 300)}...`)}
-              tags={article.tags}
+              tags={article.tag_names}
             />
           </div>
         ))}

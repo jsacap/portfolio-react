@@ -35,13 +35,14 @@ const SinglePost = ({ id, title, coverPhoto, tags, content }) => {
         </div>
         
           <div>
-            {Array.isArray(tags) && tags.map(tag => {
-              return (
-                <Badge key={tag.name} borderRadius='full' px='2' colorScheme='light' bg={'teal'} mr={2} mb={2}>
-                  {tag.name}
-                </Badge>
-                );
+          {Array.isArray(tags) && tags.map(tagName => {
+  return (
+    <Badge key={tagName} borderRadius='full' px='2' colorScheme='light' bg={'teal'} mr={2} mb={2}>
+      {tagName}
+    </Badge>
+  );
 })}
+
 
           
         </div>
