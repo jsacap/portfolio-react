@@ -12,8 +12,8 @@ const SinglePostPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const apiUrl = `http://localhost:8000/post/${id}/`;
-    // const apiUrl = `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/`;
+    // const apiUrl = `http://localhost:8000/post/${id}/`;
+    const apiUrl = `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/`;
     axios
       .get(apiUrl)
       .then(response => {
@@ -32,8 +32,8 @@ const SinglePostPage = () => {
   useEffect(() => {
     const fetchPostData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/post/${id}/`);
-        // const response = await axios.get(`https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/`);
+        // const response = await axios.get(`http://localhost:8000/post/${id}/`);
+        const response = await axios.get(`https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/`);
         setPostData(response.data);
       } catch (error) {
         console.error('Error Fetching Post Data', error);
@@ -51,8 +51,8 @@ const SinglePostPage = () => {
         const accessToken = localStorage.getItem('accessToken');
         if (postData && postData.id) {
           const response = await axios.delete(
-            `http://localhost:8000/post/${postData.id}/delete_post/`, 
-            // `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${postData.id}/delete_post/`, 
+            // `http://localhost:8000/post/${postData.id}/delete_post/`, 
+            `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${postData.id}/delete_post/`, 
             {
               headers: {
                 'Authorization': `JWT ${accessToken}`,

@@ -28,7 +28,16 @@ const MarketBlog = () => {
       <div className='jsa__header-content col-md-6'>
         <h1 className='gradient__text'>Market Insights</h1>
       </div>
-        <p className='col-md-6'>On this page, you will find a collection of market-related articles. These articles consist of my own observations and research, which combine both fundamental and technical analysis for various markets.</p>
+        <p className='col-md-6'>
+          On this page, I share my insights and research findings, blending fundamental 
+          and technical analysis across diverse markets. Since beginning my trading journey 
+          in 2017, I've dedicated countless hours to back-testing and refining my unique trading 
+          strategies. This journey has not only led me to consistent profitability, but it has 
+          also provided me with a distinctive perspective on market dynamics. I place a strong 
+          emphasis on understanding the reasons behind price movements and recognising the significance 
+          of historical patterns. My approach is about delving deep into the 'how' and 'why' of market 
+          trends, offering readers a comprehensive and insightful view.
+        </p>
       <div className='jsa__blog-page-container'>
         {articles.map((article, index) => {
 

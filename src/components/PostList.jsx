@@ -28,7 +28,6 @@ const PostsList = () => {
         Each project I work on has a specific goal in mind, to address a challenge and improve efficiency in my personal pursuits. This focus allows me to be creative in finding innovative solutions and apply the knowledge I've gained throughout my career. <br />
         Every project is like a puzzle, combining different skills, methods, and technologies that I've learned over time. It's exciting to see these elements come together and create something functional and impactful.
       </p>
-      
       <div className='jsa__blog-page-container mt-7'>
         {articles.map(article => (
           <div key={article.id}>
