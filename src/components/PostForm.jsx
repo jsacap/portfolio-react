@@ -14,7 +14,7 @@ const PostForm = () => {
 
   const updateTags = (tagString) => {
     const tagsArray = tagString.split(',').map(tag => ({ name: tag.trim() }));
-    setTags([...tagsArray]); // Ensure tags is directly an array of objects
+    setTags([...tagsArray]);
   };
   
   
@@ -25,10 +25,11 @@ const PostForm = () => {
       const fetchPostData = async () => {
         try {
           const response = await axios.get(`http://localhost:8000/post/${id}/`);
+          console.log(response.data)
           const postData = response.data;
           setTitle(postData.title);
           setContent(postData.content);
-          setTags(postData.tags.map(tag => tag.name));
+          setTags(postData.tag_names.map(tagName => ({ name: tagName })))
         } catch (error) {
           console.error('Failed fetching data for post', error);
         }
@@ -44,36 +45,39 @@ const PostForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    
     try {
       const formData = new FormData();
       formData.append('title', title);
       formData.append('content', content);
-      console.log(tags);
-      formData.append('tags', JSON.stringify(tags.map(tag => tag.name)));
-
-            
+    
+      if (id) {
+        // Logic for updating an existing post
+        tags.forEach(tag => formData.append('tags', tag.name));
+      } else {
+        // Logic for creating a new post
+        const tagStrings = tags.map(tag => tag.name);
+        formData.append('tags', JSON.stringify(tagStrings));
+      }
   
       if (coverPhoto) {
         formData.append('cover_photo', coverPhoto);
       }
-  
-      const url = id ? `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/` : 'https://portfolio-backend-production-sanchojralegre.up.railway.app/post/';
+    
+      const url = id ? `http://localhost:8000/post/${id}/` : 'http://localhost:8000/post/';
       const method = id ? 'put' : 'post';
-      // const url = id ? `http://localhost:8000/post/${id}/` : 'http://localhost:8000/post/';
-      // const method = id ? 'put' : 'post';
-  
+    
       const response = await axios[method](url, formData, {
         headers: {
           'Authorization': `JWT ${localStorage.getItem('accessToken')}`,
           'Content-Type': 'multipart/form-data',
         },
       });
-  
+    
       navigate('/');
       console.log(id ? 'Post Updated:' : 'Post Created', response.data);
     } catch (error) {
-      console.error('Error creating post:', error);
+      console.error('Error creating or updating post:', error);
     }
   };
   
@@ -96,14 +100,14 @@ const PostForm = () => {
         </Center>
         <br />
         <Center paddingY={2}>
-        <label>
+        <FormLabel>
           Tags:
           <input
             type='text'
             value={tags.map(tag => tag.name).join(', ')}
             onChange={(e) => updateTags(e.target.value)}
           />
-        </label>
+        </FormLabel>
         </Center>
         <br />
           <Center>
