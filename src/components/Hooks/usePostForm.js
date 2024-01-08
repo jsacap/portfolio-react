@@ -1,65 +1,60 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const usePostForm = (id) => {
+const usePostForm = (postId, navigate) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [coverPhoto, setCoverPhoto] = useState(null);
   const [tags, setTags] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (id) {
-      const fetchPostData = async () => {
-        try {
-        //   const response = await axios.get(`https://sanchojralegre.up.railway.app/post/${id}/`);
-          const response = await axios.get(`http://localhost:8000/post/${id}/`);
+    if (postId) {
+      setIsLoading(true);
+      axios.get(`http://localhost:8000/post/${postId}/`)
+        .then(response => {
           const postData = response.data;
           setTitle(postData.title);
           setContent(postData.content);
-          setTags(postData.tag_names.map(name => ({ name }))); // Convert to object format
-        } catch (error) {
+          setTags(postData.tag_names.map(tagName => ({ name: tagName })));
+          setIsLoading(false);
+        })
+        .catch(error => {
           console.error('Failed fetching data for post', error);
           setError(error);
-        }
-      };
-      fetchPostData();
+          setIsLoading(false);
+        });
     }
-  }, [id]);
+  }, [postId]);
 
   const handleCoverPhotoChange = (e) => {
-    setCoverPhoto(e.target.files[0]);
+    const selectedCoverPhoto = e.target.files[0];
+    setCoverPhoto(selectedCoverPhoto);
   };
 
-  const handleSubmit = async (e, navigateCallback) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const formData = new FormData();
       formData.append('title', title);
       formData.append('content', content);
-      const tagNames = tags.map(tag => tag.name); // Convert to array of strings
-      formData.append('tags', JSON.stringify(tagNames));
+
+      if (postId) {
+        tags.forEach(tag => formData.append('tags', tag.name));
+      } else {
+        const tagStrings = tags.map(tag => tag.name);
+        formData.append('tags', JSON.stringify(tagStrings));
+      }
 
       if (coverPhoto) {
         formData.append('cover_photo', coverPhoto);
       }
 
-    //   const url = id 
-    //       ? `https://sanchojralegre.up.railway.app/post/${id}/` 
-    //       : 'https://sanchojralegre.up.railway.app/post/';
-    //   const method = id ? 'put' : 'post';
-
-    //   await axios[method](url, formData, {
-    //     headers: {
-    //       'Authorization': `JWT ${localStorage.getItem('accessToken')}`,
-    //       'Content-Type': 'multipart/form-data',
-    //     },
-    //   });
-      const url = id 
-          ? `http://localhost:8000/post/${id}/` 
-          : 'http://localhost:8000/post/';
-      const method = id ? 'put' : 'post';
+      const url = postId ? `http://localhost:8000/post/${postId}/` : 'http://localhost:8000/post/';
+      const method = postId ? 'put' : 'post';
 
       await axios[method](url, formData, {
         headers: {
@@ -68,21 +63,16 @@ const usePostForm = (id) => {
         },
       });
 
-      navigateCallback();
+      navigate('/');
     } catch (error) {
-      console.error('Error creating/updating post:', error);
+      console.error('Error submitting post:', error);
       setError(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  return {
-    title, setTitle,
-    content, setContent,
-    coverPhoto, setCoverPhoto,
-    tags, setTags,
-    handleCoverPhotoChange, handleSubmit,
-    error
-  };
+  return { title, setTitle, content, setContent, coverPhoto, setCoverPhoto, tags, setTags, handleCoverPhotoChange, handleSubmit, isLoading, error };
 };
 
 export default usePostForm;
