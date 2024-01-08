@@ -24,7 +24,7 @@ export function Navigation() {
         </Nav>
         <Nav>
           <Link to='https://github.com/jsacap' target='__blank' rel='noopener noreferror'>
-            <AiFillGithub />
+            <AiFillGithub padding={5} color='white' />
           </Link>
           {isLoggedIn() && <Nav.Link href='/post'>New Project Post</Nav.Link>}
           {isLoggedIn() && <Nav.Link href='/tags'>Tags</Nav.Link>}
