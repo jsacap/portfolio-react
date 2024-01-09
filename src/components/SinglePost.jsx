@@ -11,7 +11,7 @@ const SinglePage = () => {
 
   useEffect(() => {
     // Fetch the post data using the id
-    axios.get(`http://localhost:8000/post/${id}`)
+    axios.get(`https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}`)
       .then(response => {
         setPost(response.data);
       })

@@ -12,7 +12,7 @@ const usePostForm = (postId, navigate) => {
   useEffect(() => {
     if (postId) {
       setIsLoading(true);
-      axios.get(`http://localhost:8000/post/${postId}/`)
+      axios.get(`https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${postId}/`)
         .then(response => {
           const postData = response.data;
           setTitle(postData.title);
@@ -53,7 +53,7 @@ const usePostForm = (postId, navigate) => {
         formData.append('cover_photo', coverPhoto);
       }
 
-      const url = postId ? `http://localhost:8000/post/${postId}/` : 'http://localhost:8000/post/';
+      const url = postId ? `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${postId}/` : 'https://portfolio-backend-production-sanchojralegre.up.railway.app/post/';
       const method = postId ? 'put' : 'post';
 
       await axios[method](url, formData, {
