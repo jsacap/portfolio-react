@@ -21,7 +21,7 @@ const MarketBlog = () => {
   }, []);
 
   const handlePostClick = (id) => {
-    navigate(`/blog/article/${id}`);
+    navigate(`/marketblog/article/${id}`);
   };
 
   return (

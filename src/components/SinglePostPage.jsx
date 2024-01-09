@@ -86,7 +86,7 @@ const SinglePostPage = () => {
 
   return ( 
     <Box bg='#040C18'>
-    <Box bg="black" boxShadow="md" borderRadius="lg" p={6} maxW="2xl" mx="auto">
+    <Box bg="BlackAlpha600" boxShadow="md" borderRadius="lg" p={6} maxW="2xl" mx="auto">
       <Image src={coverPhotoUrl} alt='Article cover photo' borderRadius="lg" />
 
       <Heading as="h1" size="xl" mt={4} mb={6}>
