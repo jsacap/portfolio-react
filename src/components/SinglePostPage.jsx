@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Spinner } from '@chakra-ui/react';
+import { Box, Image, Heading, Text, Button } from '@chakra-ui/react';
 
 
 const SinglePostPage = () => {
@@ -83,25 +84,32 @@ const SinglePostPage = () => {
   const { title, content } = article;
   const coverPhotoUrl = `${article.cover_photo}`;
 
-  return (
-    <div className='jsa__articlepage'>
-      <img src={coverPhotoUrl} alt='Article cover photo' />
-      <h1>{title}</h1>
-      {/* <p>{tags}</p> */}
-      <div className='jsa__articlepage-content'>
-        <div dangerouslySetInnerHTML={{ __html: content }} />
-      </div>
+  return ( 
+    <Box bg='#040C18'>
+    <Box bg="black" boxShadow="md" borderRadius="lg" p={6} maxW="2xl" mx="auto">
+      <Image src={coverPhotoUrl} alt='Article cover photo' borderRadius="lg" />
+
+      <Heading as="h1" size="xl" mt={4} mb={6}>
+        {title}
+      </Heading>
+
+      <Box p={{ base: 1, md: 4 }} 
+      m={{ base: 0.5, md: 2}}
+      className='jsa__articlepage-content' dangerouslySetInnerHTML={{ __html: content }} />
+
       {isLoggedIn && (
-        <>
-          <button className='btn btn-primary' onClick={() => handleEditClick(id)}>
+        <Box display="flex" justifyContent="space-between" mt={6}>
+          <Button colorScheme="blue" onClick={() => handleEditClick(id)}>
             Edit
-          </button>
-          <button className='btn btn-danger' onClick={handleDeleteClick}>
+          </Button>
+          <Button colorScheme="red" onClick={handleDeleteClick}>
             Delete
-          </button>
-        </>
+          </Button>
+        </Box>
       )}
-    </div>
+    </Box>
+    </Box>
+
   );
 };
 

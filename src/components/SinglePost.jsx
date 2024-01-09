@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { Badge } from '@chakra-ui/react';
+import { Box, Image, Heading, Text, Badge } from '@chakra-ui/react';
 
 
 const SinglePost = ({ id, title, coverPhoto, tags, content }) => {
@@ -24,31 +24,43 @@ const SinglePost = ({ id, title, coverPhoto, tags, content }) => {
   };
 
   return (
-    <div className='jsa__blog-container_article' onClick={handleClick}>
-      <div className='jsa__blog-container_article-image'>
-        <img src={coverPhoto || 'default_image_url'} alt='Article Cover Photo' />
-      </div>
-      <div className='jsa__blog-container_article-content'>
-        <div>
-          <h3>{title}</h3>
-          {content}
-        </div>
-        
-          <div>
-          {Array.isArray(tags) && tags.map(tagName => {
-  return (
-    <Badge key={tagName} borderRadius='full' px='2' colorScheme='light' bg={'teal'} mr={2} mb={2}>
-      {tagName}
-    </Badge>
-  );
-})}
+    
+    <Box 
+          maxW="xl"
+          borderWidth="1px"
+          borderRadius="lg"
+          overflow="hidden"
+          onClick={handleClick}
+          _hover={{ shadow: "md", cursor: "pointer" }}
+          bg="transparent" 
+        >
+          <Image
+            src={coverPhoto || 'default_image_url'}
+            alt='Article Cover Photo'
+            boxSize="100%"
+            objectFit="cover" 
+            height='300px'
+          />
 
-
-          
-        </div>
-      </div>
-    </div>
-  );
-};
-
+          <Box p="4"> 
+            <Heading size="lg" mb="2">{title}</Heading> 
+            <Box mb="4" overflowY="auto">{content}</Box>
+            <Box display="flex" flexWrap="wrap"> 
+              {Array.isArray(tags) && tags.map(tagName => (
+                <Badge
+                  key={tagName}
+                  borderRadius="full"
+                  px="2"
+                  colorScheme="teal"
+                  mr="2"
+                  mb="2"
+                >
+                  {tagName}
+                </Badge>
+              ))}
+            </Box>
+          </Box>
+        </Box>
+      );
+    };
 export default SinglePost;
