@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BlogCard from './BlogCard';
-import { Box, SimpleGrid, Flex, Heading, Text, VStack, HStack } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
-import parse from 'html-react-parser';
+import { Box, SimpleGrid, Flex } from '@chakra-ui/react';
 import Hero from '../Hero';
-import portfolio from '../../src/assets/portfolio.jpg'
+import portfolio from '../../public/assets/portfolio.jpg'
 
 const PostsList = () => {
   const [articles, setArticles] = useState([]);

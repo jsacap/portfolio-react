@@ -3,7 +3,7 @@ import axios from 'axios';
 import BlogPost from './BlogPost';
 import { Box, SimpleGrid, Flex, Heading, Text, VStack, Image } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import marketInsightsImage from '../../src/assets/marketInsightsImage.jpg'
+import marketInsightsImage from '../../public/assets/marketInsightsImage.jpg'
 import Hero from '../Hero';
 const MarketBlog = () => {
   const [articles, setArticles] = useState([]);
