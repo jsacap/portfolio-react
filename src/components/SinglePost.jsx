@@ -1,66 +1,43 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
-import { Box, Image, Heading, Text, Badge } from '@chakra-ui/react';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import BlogPost from './BlogPost';
+import { Spinner } from '@chakra-ui/react';
 
-
-const SinglePost = ({ id, title, coverPhoto, tags, content }) => {
-
-  
+const SinglePage = () => {
+  const [post, setPost] = useState(null);
+  const { id } = useParams();
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    
+  useEffect(() => {
+    // Fetch the post data using the id
+    axios.get(`http://localhost:8000/post/${id}`)
+      .then(response => {
+        setPost(response.data);
+      })
+      .catch(error => {
+        console.error('Failed to fetch post', error);
+      });
+  }, [id]);
 
-    navigate(`/blog/article/${id}`, {
-      state: {
-        id,
-        title,
-        coverPhoto,
-        tags,
-        content: typeof content === 'string' ? content : undefined,
-      },
-    });
+  const handlePostClick = postId => {
+    navigate(`/blog/article/${postId}`);
   };
 
-  return (
-    
-    <Box 
-          maxW="xl"
-          borderWidth="1px"
-          borderRadius="lg"
-          overflow="hidden"
-          onClick={handleClick}
-          _hover={{ shadow: "md", cursor: "pointer" }}
-          bg="transparent" 
-        >
-          <Image
-            src={coverPhoto || 'default_image_url'}
-            alt='Article Cover Photo'
-            boxSize="100%"
-            objectFit="cover" 
-            height='300px'
-          />
+  if (!post) {
+    return <Spinner />;
+  }
 
-          <Box p="4"> 
-            <Heading size="lg" mb="2">{title}</Heading> 
-            <Box mb="4" overflowY="auto">{content}</Box>
-            <Box display="flex" flexWrap="wrap"> 
-              {Array.isArray(tags) && tags.map(tagName => (
-                <Badge
-                  key={tagName}
-                  borderRadius="full"
-                  px="2"
-                  colorScheme="teal"
-                  mr="2"
-                  mb="2"
-                >
-                  {tagName}
-                </Badge>
-              ))}
-            </Box>
-          </Box>
-        </Box>
-      );
-    };
-export default SinglePost;
+  return (
+    <BlogPost
+      id={post.id}
+      title={post.title}
+      coverPhoto={post.cover_photo || 'default_image_url'}
+      tags={post.tag_names}
+      content={post.content}
+      onPostClick={handlePostClick}
+    />
+  );
+};
+
+export default SinglePage;
