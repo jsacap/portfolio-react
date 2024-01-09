@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Image, Heading, Text, Badge } from '@chakra-ui/react';
 import parse from 'html-react-parser';
 
-const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick }) => {
+const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick, created }) => {
   const stripHtml = (htmlString) => {
     const tempDiv = document.createElement("div");
       tempDiv.innerHTML = htmlString;
@@ -11,6 +11,11 @@ const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick }) => {
   
     const strippedContent = stripHtml(content);
     const contentPreview = `${strippedContent.slice(0, 300)}...`;
+    const formatDate = (dateString) => {
+      const options = { year: 'numeric', month: 'long', day: 'numeric'};
+      return new Date(dateString).toLocaleDateString('en-AU', options);
+    };
+    const formattedDate = formatDate(created);
   
 
   return (
@@ -34,6 +39,7 @@ const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick }) => {
 
       <Box p="1"> 
         <Heading size="lg" mb="2">{title}</Heading> 
+        <Text p="1" m="1" overflowY="auto">Written on - {formattedDate}</Text>
         <Text p="1" m="1" overflowY="auto">{contentPreview}</Text>
         <Box display="flex" flexWrap="wrap"> 
           {Array.isArray(tags) && tags.map(tagName => (
