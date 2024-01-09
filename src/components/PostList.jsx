@@ -3,6 +3,7 @@ import axios from 'axios';
 import BlogCard from './BlogCard';
 import { Box, SimpleGrid, Flex, Heading, Text, VStack, HStack } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+import parse from 'html-react-parser';
 
 const PostsList = () => {
   const [articles, setArticles] = useState([]);
@@ -40,7 +41,7 @@ const PostsList = () => {
               id={article.id}
               coverPhoto={article.cover_photo || 'default_image_url'}
               title={article.title}        
-              content={`${article.content.slice(0, 300)}...`}
+              content={`{parse${article.content.slice(0, 300)}...`}
               tags={article.tag_names}              
               
             />

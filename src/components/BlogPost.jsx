@@ -1,7 +1,18 @@
 import React from 'react';
 import { Box, Image, Heading, Text, Badge } from '@chakra-ui/react';
+import parse from 'html-react-parser';
 
 const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick }) => {
+  const stripHtml = (htmlString) => {
+    const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = htmlString;
+      return tempDiv.textContent || tempDiv.innerText || "";
+    };
+  
+    const strippedContent = stripHtml(content);
+    const contentPreview = `${strippedContent.slice(0, 300)}...`;
+  
+
   return (
     <Box 
       maxW="xl"
@@ -11,6 +22,7 @@ const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick }) => {
       onClick={() => onPostClick(id)}
       _hover={{ shadow: "md", cursor: "pointer" }}
       bg="transparent"
+      
     >
       <Image
         src={coverPhoto || 'default_image_url'}
@@ -20,9 +32,9 @@ const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick }) => {
         height='300px'
       />
 
-      <Box p="4"> 
+      <Box p="1"> 
         <Heading size="lg" mb="2">{title}</Heading> 
-        <Text mb="4" overflowY="auto">{content}</Text>
+        <Text p="1" m="1" overflowY="auto">{contentPreview}</Text>
         <Box display="flex" flexWrap="wrap"> 
           {Array.isArray(tags) && tags.map(tagName => (
             <Badge
