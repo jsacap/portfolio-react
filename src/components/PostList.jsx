@@ -3,10 +3,12 @@ import axios from 'axios';
 import BlogCard from './BlogCard';
 import { Box, SimpleGrid, Flex } from '@chakra-ui/react';
 import Hero from '../Hero';
+import CardSkeleton from './CardSkeleton';
 
 const PostsList = () => {
   const imageUrl = '/portfolio.jpg'
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
   
 
   useEffect(() => {
@@ -14,9 +16,10 @@ const PostsList = () => {
     axios.get(apiUrl)
       .then(response => {
         setArticles(response.data);
+        setLoading(false)
       })
       .catch(error => {
-        console.error('Failed to fetch data', error);
+        setLoading(false);
       });
   }, []);
 
@@ -42,8 +45,16 @@ const PostsList = () => {
       </Flex>
 
       <Box p={4} bg={'#040C18'} color='white'>
+
         <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing="20px">
-          {articles.map(article => (
+        {loading ? (
+          <>
+          <CardSkeleton />
+          <CardSkeleton />
+          <CardSkeleton />
+          </>
+        ) : (
+          articles.map(article => (
             <BlogCard
               key={article.id}
               id={article.id}
@@ -53,7 +64,8 @@ const PostsList = () => {
               tags={article.tag_names}              
               
             />
-          ))}
+          ))
+        )}
         </SimpleGrid>
       </Box>
     </>

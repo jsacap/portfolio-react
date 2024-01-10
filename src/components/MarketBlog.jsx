@@ -4,9 +4,11 @@ import BlogPost from './BlogPost';
 import { Box, SimpleGrid, Flex, Heading, Text, VStack, Image } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import Hero from '../Hero';
+import CardSkeleton from './CardSkeleton';
 
 const MarketBlog = () => {
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const imageUrl = '/marketinsightsimage.jpg'
 
@@ -16,9 +18,11 @@ const MarketBlog = () => {
       .then(response => {
         const filteredArticles = response.data.filter(article => !article.tags.some(tag => tag.name === 'Private_Investor'));
         setArticles(filteredArticles);
+        setLoading(false)
       })
       .catch(error => {
-        console.error('Failed to fetch data', error);
+        return null;
+        setLoading(false);
       });
   }, []);
 
@@ -45,7 +49,15 @@ const MarketBlog = () => {
         
 
         <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing="20px" p={4}>
-          {articles.map(article => (
+          {loading ? (
+            <>
+            <CardSkeleton />
+            <CardSkeleton />
+            <CardSkeleton />            
+            </>
+          ) : (
+            
+          articles.map(article => (
             <BlogPost
               key={article.id}
               id={article.id}              
@@ -56,7 +68,8 @@ const MarketBlog = () => {
               tags={article.tags.map(tag => tag.name)}
               onPostClick={handlePostClick}
             />
-          ))}
+          ))
+          )}
         </SimpleGrid>
       </Box>
     </>
