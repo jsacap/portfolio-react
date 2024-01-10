@@ -27,6 +27,7 @@ const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick, created }
       onClick={() => onPostClick(id)}
       _hover={{ shadow: "md", cursor: "pointer" }}
       bg="transparent"
+      color='white'
       
     >
       <Image

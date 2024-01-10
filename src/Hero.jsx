@@ -4,7 +4,7 @@ import { Box, Flex, VStack, Heading, Text, Image } from '@chakra-ui/react';
 
 const Hero = ({ title, description, imageUrl, imageAlt }) => {
   return (
-    <Box bg="#040C18">
+    <Box bg="#040C18" color='white'>
       <Flex
         direction={{ base: "column", md: "row" }}
         justify="space-between"

@@ -41,7 +41,7 @@ const PostsList = () => {
       >
       </Flex>
 
-      <Box p={4} bg={'#040C18'}>
+      <Box p={4} bg={'#040C18'} color='white'>
         <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing="20px">
           {articles.map(article => (
             <BlogCard
