@@ -21,7 +21,7 @@ const ArticlePage = () => {
 
   if (loading) {
     return (
-      <Box bg='#040C18' textAlign="center" justifyContent='center' height='50vh' alignItems='center'>
+      <Box bg='#040C18' textAlign="center" justifyContent='center' height='100vh' alignItems='center'>
         <Spinner size="xl" color='blue-500' thickness='6px' />
       </Box>
     );

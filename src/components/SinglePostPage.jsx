@@ -47,7 +47,7 @@ const SinglePostPage = () => {
 
   if (loading) {
     return (
-      <Box display='flex' justifyContent="center" alignItems="center" textAlign='center' height='50vh' bg='#040C18'>
+      <Box display='flex' justifyContent="center" alignItems="center" textAlign='center' height='100vh' bg='#040C18'>
         <Spinner size='xl' thickness='6px' color='blue-500' />;
       </Box>
     )
