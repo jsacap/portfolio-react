@@ -21,8 +21,8 @@ const ArticlePage = () => {
 
   if (loading) {
     return (
-      <Box bg='#040C18' textAlign="center" py="20">
-        <Spinner size="xl" />
+      <Box bg='#040C18' textAlign="center" justifyContent='center' height='50vh' alignItems='center'>
+        <Spinner size="xl" color='blue-500' thickness='6px' />
       </Box>
     );
   }
@@ -41,7 +41,7 @@ const ArticlePage = () => {
   });
 
   return (
-    <Box bg='#040C18'>
+    <Box bg='#040C18' textColor='white'>
       <Box bg="BlackAlpha600" boxShadow="md" borderRadius="lg" p={6} maxW="5xl" mx="auto">
         <Image src={coverPhotoUrl} alt='Article cover photo' borderRadius="lg" mx='auto' />
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Progress, Box, Image, Heading, Text, Button } from '@chakra-ui/react';
+import { Spinner, Box, Image, Heading, Text, Button } from '@chakra-ui/react';
 
 const SinglePostPage = () => {
   const { id } = useParams();
@@ -46,7 +46,11 @@ const SinglePostPage = () => {
   };
 
   if (loading) {
-    return <Progress size="lg" colorScheme='blue' hasStripe isIndeterminate />;
+    return (
+      <Box display='flex' justifyContent="center" alignItems="center" textAlign='center' height='50vh' bg='#040C18'>
+        <Spinner size='xl' thickness='6px' color='blue-500' />;
+      </Box>
+    )
   }
 
   if (!article) {
@@ -55,7 +59,7 @@ const SinglePostPage = () => {
 
   const { title, content, cover_photo } = article;
   return (
-    <Box bg='#040C18'>
+    <Box bg='#040C18' textColor='white'>
       <Box bg="BlackAlpha600" boxShadow="md" borderRadius="lg" p={6} maxW="2xl" mx="auto">
         <Image src={cover_photo || 'default_image_url'} alt='Article cover' borderRadius="lg" />
 
