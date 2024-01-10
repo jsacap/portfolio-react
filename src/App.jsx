@@ -21,7 +21,7 @@ function App() {
     <Router>
       <ChakraProvider>
       <div className="App">
-        <div className="gradient__bg">
+        <div className="gradient__bg" color='white'>
           <Navigation />
         </div>
         <Routes>

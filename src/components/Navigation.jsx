@@ -16,7 +16,7 @@ export function Navigation() {
   };
 
   return (
-    <Box as="nav" bg="navbar-transparent" p={4}>
+    <Box color='white' as="nav" bg="navbar-transparent" p={4}>
       <Flex justifyContent="space-between" alignItems="center">
         {/* Logo/Brand Name */}
         <Link as={RouterLink} to="/" 
