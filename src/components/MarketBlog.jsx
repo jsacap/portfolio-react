@@ -3,11 +3,12 @@ import axios from 'axios';
 import BlogPost from './BlogPost';
 import { Box, SimpleGrid, Flex, Heading, Text, VStack, Image } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import marketInsightsImage from '../assets/marketInsightsImage.jpg';
 import Hero from '../Hero';
+
 const MarketBlog = () => {
   const [articles, setArticles] = useState([]);
   const navigate = useNavigate();
+  const imageUrl = '/marketinsightsimage.jpg'
 
   useEffect(() => {
     const apiUrl = 'https://jsax-production.up.railway.app/blog/api/';
@@ -37,7 +38,7 @@ const MarketBlog = () => {
                 emphasis on understanding the reasons behind price movements and recognising the significance 
                 of historical patterns. My approach is about delving deep into the 'how' and 'why' of market 
                 trends, offering readers a comprehensive and insightful view."
-    imageUrl={marketInsightsImage}
+    imageUrl={imageUrl}
     imageAlt="Market Insights Image"
     />
       <Box className='jsa__blog-page' bg="#040C18">

@@ -3,10 +3,9 @@ import axios from 'axios';
 import BlogCard from './BlogCard';
 import { Box, SimpleGrid, Flex } from '@chakra-ui/react';
 import Hero from '../Hero';
-import portfolioImage from '../assets/portfolio.jpg';
 
 const PostsList = () => {
-
+  const imageUrl = '/portfolio.jpg'
   const [articles, setArticles] = useState([]);
   
 
@@ -30,7 +29,7 @@ const PostsList = () => {
     description="This page showcases my work as a full-stack developer. Here, you'll find a collection of projects that I've created using different programming languages. To me, a project is more than just code; it's about solving problems and making our lives easier. 
                 Each project I work on has a specific goal in mind, to address a challenge and improve efficiency in my personal pursuits. This focus allows me to be creative in finding innovative solutions and apply the knowledge I've gained throughout my career. <br />
                 Every project is like a puzzle, combining different skills, methods, and technologies that I've learned over time. It's exciting to see these elements come together and create something functional and impactful."
-    imageUrl={portfolioImage}
+    imageUrl={imageUrl}
     imageAlt='Portfolio Image' 
     />
       <Flex
