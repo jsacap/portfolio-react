@@ -6,6 +6,7 @@ const ContactForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         subject: '',
+        email: '',
         message: ''
     });
     const [submitting, setSubmitting] = useState(false);
@@ -20,10 +21,11 @@ const ContactForm = () => {
         e.preventDefault();
         setSubmitting(true);
         try {
-            const response = await axios.post('/contact/', formData);
+            console.log(formData)
+            const response = await axios.post('http://localhost:8000/contact/', formData);
             if(response.data.success) {
                 setSuccess(true);
-                setFormData({ name: '', subject: '', message: '' });
+                setFormData({ name: '', subject: '', email: '',  message: '' });
             } else {
                 setError(true);
             }
@@ -46,6 +48,10 @@ const ContactForm = () => {
                 <FormControl isRequired>
                     <FormLabel>Subject</FormLabel>
                     <Input name="subject" value={formData.subject} onChange={handleChange} />
+                </FormControl>
+                <FormControl isRequired>
+                    <FormLabel>Your Email Address</FormLabel>
+                    <Input name="email" value={formData.email} onChange={handleChange} />
                 </FormControl>
                 <FormControl isRequired>
                     <FormLabel>Message</FormLabel>
