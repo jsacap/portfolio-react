@@ -1,34 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, {  } from 'react';
 import BlogPost from './BlogPost';
-import { Box, SimpleGrid, Flex, Heading, Text, VStack, Image } from '@chakra-ui/react';
+import { Box, SimpleGrid, Spinner } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import Hero from '../Hero';
 import CardSkeleton from './CardSkeleton';
+import useArticles from './Hooks/useArticles';
 
 const MarketBlog = () => {
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { articles, loading } = useArticles('https://jsax-production.up.railway.app/blog/api/', 'Private_Investor');
   const navigate = useNavigate();
-  const imageUrl = '/marketinsightsimage.jpg'
-
-  useEffect(() => {
-    const apiUrl = 'https://jsax-production.up.railway.app/blog/api/';
-    axios.get(apiUrl)
-      .then(response => {
-        const filteredArticles = response.data.filter(article => !article.tags.some(tag => tag.name === 'Private_Investor'));
-        setArticles(filteredArticles);
-        setLoading(false)
-      })
-      .catch(error => {
-        return null;
-        setLoading(false);
-      });
-  }, []);
+  const imageUrl = '/marketinsightsimage.jpg';
 
   const handlePostClick = (id) => {
     navigate(`/marketblog/article/${id}`);
   };
+
+  if (loading) {
+    return (
+      <Box bg='#040C18' textAlign="center" justifyContent='center' height='100vh' alignItems='center'>
+        <Spinner size="xl" color='blue-500' thickness='6px' />
+      </Box>
+    );
+  }
 
   return (
     <>
