@@ -12,6 +12,7 @@ import ArticlePage from './components/MarketBlogArticlePage.jsx';
 import './styles/styles.css';
 import './interceptor/Axios.jsx';
 import SandBox from './components/SandBox.jsx';
+import ContactPage from './components/ContactPage.jsx';
 
 import TagsPage from './components/Tags/TagPage.jsx';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -37,6 +38,7 @@ function App() {
           <Route path="/marketblog" element={<MarketBlog />} />
           <Route path="/test" element={<SandBox />} />
           <Route path="/tags" element={<TagsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
 
         </Routes>
       </div>
