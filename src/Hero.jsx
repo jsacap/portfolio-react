@@ -24,6 +24,7 @@ const Hero = ({ title, description, imageUrl, imageAlt }) => {
             maxW={{ base: "100%", md: "80%" }}
             mx="auto"
             height='400px'
+            width='680px'
           />
         </Box>
       </Flex>

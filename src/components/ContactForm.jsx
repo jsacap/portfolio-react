@@ -22,7 +22,7 @@ const ContactForm = () => {
         setSubmitting(true);
         try {
             console.log(formData)
-            const response = await axios.post('http://localhost:8000/contact/', formData);
+            const response = await axios.post('https://portfolio-backend-production-sanchojralegre.up.railway.app:8000/contact/', formData);
             if(response.data.success) {
                 setSuccess(true);
                 setFormData({ name: '', subject: '', email: '',  message: '' });
@@ -43,19 +43,19 @@ const ContactForm = () => {
             <form onSubmit={handleSubmit}>
                 <FormControl isRequired>
                     <FormLabel>Name</FormLabel>
-                    <Input name="name" value={formData.name} onChange={handleChange} />
+                    <Input variant='filled' name="name" value={formData.name} onChange={handleChange} />
                 </FormControl>
                 <FormControl isRequired>
                     <FormLabel>Subject</FormLabel>
-                    <Input name="subject" value={formData.subject} onChange={handleChange} />
+                    <Input variant='filled' name="subject" value={formData.subject} onChange={handleChange} />
                 </FormControl>
                 <FormControl isRequired>
                     <FormLabel>Your Email Address</FormLabel>
-                    <Input name="email" value={formData.email} onChange={handleChange} />
+                    <Input variant='filled' name="email" value={formData.email} onChange={handleChange} />
                 </FormControl>
                 <FormControl isRequired>
                     <FormLabel>Message</FormLabel>
-                    <Textarea name="message" value={formData.message} onChange={handleChange} />
+                    <Textarea variant='filled' name="message" value={formData.message} onChange={handleChange} />
                 </FormControl>
                 <Button mt={4} colorScheme="teal" type="submit" isLoading={submitting}>
                     Send

@@ -6,7 +6,7 @@ import Hero from '../Hero';
 import CardSkeleton from './CardSkeleton';
 
 const PostsList = () => {
-  const imageUrl = '/portfolio.jpg'
+  const imageUrl = '/portfolio.png'
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   
