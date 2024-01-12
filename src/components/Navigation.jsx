@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Flex, Box, IconButton, Link, useDisclosure, Drawer, DrawerBody, DrawerOverlay, DrawerContent, DrawerCloseButton, VStack } from '@chakra-ui/react';
 import { AiFillGithub } from 'react-icons/ai';
 import { FaCode, FaChartLine, FaHamburger } from 'react-icons/fa';
+
 import { Link as RouterLink } from 'react-router-dom';
 import { HStack } from '@chakra-ui/react';
 import { DrawerHeader } from '@chakra-ui/react';
@@ -45,13 +46,13 @@ export function Navigation() {
           {/* ... other desktop links ... */}
         </HStack>
 
-        {/* GitHub Link and Conditional Rendering for Logged In User */}
+        {/* Right Side */}
         <HStack spacing={4} display={{ base: "none", md: "flex" }}>
           <Link as={RouterLink} to="https://github.com/jsacap" isExternal>
             <AiFillGithub />
           </Link>
+          <Link as={RouterLink} to='/contact'>Contact</Link>
           {isLoggedIn() && <Link as={RouterLink} to="/post">New Project Post</Link>}
-          {isLoggedIn() && <Link as={RouterLink} to="/tags">Tags</Link>}
           {isLoggedIn() && <Link as={RouterLink} to="/logout">Logout</Link>}
         </HStack>
       </Flex>
@@ -67,7 +68,8 @@ export function Navigation() {
             <VStack spacing={4} align="start" mt={4}>
               <Link as={RouterLink} to="/" onClick={onClose}>Projects</Link>
               <Link as={RouterLink} to="/marketblog" onClick={onClose}>Market Insights</Link>
-              {/* ... other mobile links ... */}
+              <Link as={RouterLink} to="/contact" onClick={onClose}>Contact Me</Link>
+              
             </VStack>
           </DrawerBody>
         </DrawerContent>
