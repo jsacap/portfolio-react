@@ -37,7 +37,7 @@ const Logout = ({ isLoggedIn, setIsLoggedIn }) => {
   };
 
   return (
-    <Center h='100vh' bg='#040C18'>
+    <Center h='100vh' bg='#040C18' textColor='white'>
     <Box bg='#040C18'>
       <h2>LOGOUT</h2>
       <p>Are you sure you want to log out?</p>
