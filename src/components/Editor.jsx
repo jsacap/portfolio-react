@@ -1,11 +1,15 @@
-// Editor.jsx
-
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 export default function Editor({ value, onChange }) {
+  const editorStyle = {
+    maxHeight: '400px', 
+    maxWidth: '1500px', 
+    overflow: 'auto', 
+  };
+
   return (
-    <div>
+    <div style={editorStyle}>
       <ReactQuill
         value={value}
         modules={{

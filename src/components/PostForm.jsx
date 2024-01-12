@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import axios from 'axios';
 import Editor from './Editor';
 import { useParams, useNavigate } from 'react-router-dom';
 import usePostForm from './Hooks/usePostForm';
-import { Center, FormLabel, TagLabel, VStack } from '@chakra-ui/react';
+import { Box, Center, FormLabel, Input, Button, VStack } from '@chakra-ui/react';
 
 const PostForm = () => {
   const { id } = useParams();
@@ -23,42 +23,31 @@ const PostForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Center paddingY={2}>
-        <label>
-          Title:
-          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-        </label>
-        </Center>
-        <br />
-        <Center>
-        <label>
-          Content:
-          <Editor value={content} onChange={(value) => setContent(value)} />
-        </label>
-        </Center>
-        <br />
-        <Center paddingY={2}>
-        <FormLabel>
-          Tags:
-          <input
-            type='text'
-            value={tags.map(tag => tag.name).join(', ')}
-            onChange={(e) => updateTags(e.target.value)}
-          />
-        </FormLabel>
-        </Center>
-        <br />
-          <Center>
-        <FormLabel paddingX={5}>
-          Cover Photo:
-        </FormLabel>
-          <input type="file" accept="image/*" onChange={handleCoverPhotoChange} />
-        </Center>
-        <br />
-        <Center>
-        <button type="submit">{id ? 'Update' : 'Submit'}</button>
-        </Center>
-      </form>
+      <Center py={10} bg='#040C18'>
+        <Box w="full" maxW="2xl" p={6} bg="#040C18" boxShadow="md" borderRadius="md">
+          <VStack spacing={4}>
+            <FormLabel>Title:</FormLabel>
+            <Input
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <FormLabel>Content:</FormLabel>
+            <Editor value={content} onChange={(value) => setContent(value)} />
+            <FormLabel>Tags:</FormLabel>
+            <Input
+              type='text'
+              value={tags.map(tag => tag.name).join(', ')}
+              onChange={(e) => updateTags(e.target.value)}
+            />
+            <FormLabel>Cover Photo:</FormLabel>
+            <Input type="file" accept="image/*" onChange={handleCoverPhotoChange} />
+            <Button type="submit" colorScheme="blue">
+              {id ? 'Update' : 'Submit'}
+            </Button>
+          </VStack>
+        </Box>
+      </Center>
+    </form>
   );
 };
 
