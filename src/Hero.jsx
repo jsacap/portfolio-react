@@ -1,6 +1,5 @@
-// Hero.jsx
 import React from 'react';
-import { Box, Flex, VStack, Heading, Text, Image } from '@chakra-ui/react';
+import { Box, Flex, VStack, Heading, Text, Image, AspectRatio } from '@chakra-ui/react';
 
 const Hero = ({ title, description, imageUrl, imageAlt }) => {
   return (
@@ -17,15 +16,17 @@ const Hero = ({ title, description, imageUrl, imageAlt }) => {
         </VStack>
 
         <Box flex="1" p={4}>
-          <Image
-            src={imageUrl}
-            alt={imageAlt}
-            borderRadius="lg"
-            maxW={{ base: "100%", md: "80%" }}
-            mx="auto"
-            height='400px'
-            width='680px'
-          />
+          <AspectRatio ratio={16 / 9} maxW={{ base: "100%", md: "80%" }} mx="auto">
+            <Image
+              src={imageUrl}
+              alt={imageAlt}
+              borderRadius="lg"
+              maxW="100%"
+              objectFit="cover"
+              height={{ base: "auto", md: "400px" }}  // Responsive height
+              width={{ base: "auto", md: "680px" }}   // Responsive width
+            />
+          </AspectRatio>
         </Box>
       </Flex>
     </Box>

@@ -7,7 +7,7 @@ const ContactPage = () => {
   const imageUrl = '/contact.jpg'
   return (
     <>
-    <Box bg='#040C18'>
+    <Box bg='#040C18' textColor='white'>
     <Hero
   title='Contact Me'
     description="I'm always open to discussions, ideas, and opportunities. Whether it's about web or app development, market insights, or trading queries, feel free to reach out. I value every message and do my best to respond as promptly as possible.

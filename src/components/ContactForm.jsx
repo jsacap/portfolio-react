@@ -22,7 +22,7 @@ const ContactForm = () => {
         setSubmitting(true);
         try {
             console.log(formData)
-            const response = await axios.post('https://portfolio-backend-production-sanchojralegre.up.railway.app:8000/contact/', formData);
+            const response = await axios.post('https://portfolio-backend-production-sanchojralegre.up.railway.app/contact/', formData);
             if(response.data.success) {
                 setSuccess(true);
                 setFormData({ name: '', subject: '', email: '',  message: '' });
