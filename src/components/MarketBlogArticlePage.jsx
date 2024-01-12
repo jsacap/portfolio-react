@@ -10,10 +10,12 @@ const ArticlePage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const apiUrl = `https://jsax-production.up.railway.app/blog/api/${id}/`;
     axios.get(apiUrl)
       .then(response => {
         setArticle(response.data);
+        
       })
       .catch(error => console.error('Failed to fetch article data', error))
       .finally(() => setLoading(false));

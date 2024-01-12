@@ -10,6 +10,7 @@ const SinglePostPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const checkUserLoggedIn = () => !!localStorage.getItem('accessToken');
     const apiUrl = `https://portfolio-backend-production-sanchojralegre.up.railway.app/post/${id}/`;
 
