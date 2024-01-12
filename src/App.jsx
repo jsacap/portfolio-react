@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from "./components/Login"; 
 import { Home } from "./components/Home";
@@ -18,6 +18,12 @@ import TagsPage from './components/Tags/TagPage.jsx';
 import { ChakraProvider } from '@chakra-ui/react';
 
 function App() {
+  const [isLoggedin, setIsLoggedIn ] = useState(false);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    setIsLoggedIn(!!accessToken);
+  }, []);
   return (
     <Router>
       <ChakraProvider>
@@ -27,8 +33,8 @@ function App() {
         </div>
         <Routes>
           <Route path="/" element={<PostsList />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/logout" element={<Logout />} />
+          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/logout" element={<Logout setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/home" element={<Home />} />
           <Route path="/post" element={<PostPage />} />  
           <Route path="/postlist" element={<PostsList />} /> 

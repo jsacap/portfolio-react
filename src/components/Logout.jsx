@@ -1,53 +1,49 @@
 import React from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Box, Center, useToast } from '@chakra-ui/react';
 
-const Logout = () => {
+const Logout = ({ isLoggedIn, setIsLoggedIn }) => {
   const navigate = useNavigate();
+  const toast = useToast();
 
-  const handleLogout = async () => {
+  const handleLogout = () => {
     const accessToken = localStorage.getItem('accessToken');
     const refreshToken = localStorage.getItem('refreshToken');
 
-    // Check if tokens exist
     if (!accessToken || !refreshToken) {
-      console.error('Access or refresh token non-existent. User is not logged in.');
+      toast({
+        title: 'Error',
+        description: "You're already logged out.",
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      });
       return;
     }
 
-    try {
-      // Make a POST request to the logout endpoint
-      const response = await axios.delete(
-        'http://localhost:8000/auth/users/logout/',
-        {}, 
-        {
-          headers: {
-            'Authorization': `JWT ${accessToken}`,          
-          },
-        }
-      );
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    setIsLoggedIn(false); // Update the login state
 
-      console.log('Logout successful');
-      
-      // Clear the tokens from localStorage
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-      console.log('Tokens destroyed after logout');
+    toast({
+      title: 'Logged out',
+      description: "You've successfully logged out.",
+      status: 'success',
+      duration: 9000,
+      isClosable: true,
+    });
 
-      // Redirect to the login page
-      navigate('/login');
-    } catch (error) {
-      console.error('Logout failed', error);
-      // Handle logout failure
-    }
+    navigate('/login');
   };
 
   return (
-    <div>
+    <Center h='100vh' bg='#040C18'>
+    <Box bg='#040C18'>
       <h2>LOGOUT</h2>
       <p>Are you sure you want to log out?</p>
       <button onClick={handleLogout}>LOGOUT</button>
-    </div>
+    </Box>
+    </Center>
   );
 };
 

@@ -52,8 +52,14 @@ export function Navigation() {
             <AiFillGithub />
           </Link>
           <Link as={RouterLink} to='/contact'>Contact</Link>
-          {isLoggedIn() && <Link as={RouterLink} to="/post">New Project Post</Link>}
-          {isLoggedIn() && <Link as={RouterLink} to="/logout">Logout</Link>}
+          {isLoggedIn() ? (
+            <>
+              <Link as={RouterLink} to="/post">New Project Post</Link>
+              <Link as={RouterLink} to="/logout">Logout</Link>
+            </>
+          ) : (
+            <Link as={RouterLink} to="/login">Login</Link>
+          )}
         </HStack>
       </Flex>
 
