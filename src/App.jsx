@@ -13,6 +13,8 @@ import './styles/styles.css';
 import './interceptor/Axios.jsx';
 import SandBox from './components/SandBox.jsx';
 import ContactPage from './components/ContactPage.jsx';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 import TagsPage from './components/Tags/TagPage.jsx';
 import { ChakraProvider } from '@chakra-ui/react';
@@ -21,6 +23,7 @@ function App() {
   const [isLoggedin, setIsLoggedIn ] = useState(false);
 
   useEffect(() => {
+    AOS.init()
     const accessToken = localStorage.getItem('accessToken');
     setIsLoggedIn(!!accessToken);
   }, []);

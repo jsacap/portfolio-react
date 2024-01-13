@@ -2,15 +2,22 @@ import React from 'react';
 import { Box, Heading, Text, VStack, Image, Badge, HStack } from '@chakra-ui/react';
 import parse from 'html-react-parser';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const BlogCard = ({ id, coverPhoto, title, content, tags, created }) => {
+  const cardVariants = {
+    initial: { opacity: 0, y: 10 },
+    enter: { opacity: 1, y: 0 },
+    hover: { scale: 1.1 }
+  }
   const navigate = useNavigate();
   const handlePostClick = () => {
     navigate(`blog/article/${id}`)
   }
   
   return (
-    <Box     
+    <Box
+      data-aos='flip-up' data-aos-duration='2000' data-aos-once='true'     
       onClick={handlePostClick}
       key={id}
       bg="#040C18"
@@ -20,6 +27,11 @@ const BlogCard = ({ id, coverPhoto, title, content, tags, created }) => {
       maxW="xl"
       height="100%"
     >
+      <motion.div
+      variants={cardVariants}
+      initial="initial"
+      animate="enter"
+      whileHover="hover">
       <Image
         src={coverPhoto}
         alt={`Cover of ${title}`}
@@ -40,6 +52,7 @@ const BlogCard = ({ id, coverPhoto, title, content, tags, created }) => {
         </HStack>
         
       </VStack>
+      </motion.div>
     </Box>
   );
 };

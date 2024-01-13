@@ -1,8 +1,13 @@
 import React from 'react';
 import { Box, Image, Heading, Text, Badge } from '@chakra-ui/react';
-import parse from 'html-react-parser';
+import { motion } from 'framer-motion';
 
 const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick, created }) => {
+  const cardVariants = {
+    initial: { opacity: 0, y: 10 },
+    enter: { opacity: 1, y: 0 },
+    hover: { scale: 1.1 }
+  };
   const stripHtml = (htmlString) => {
     const tempDiv = document.createElement("div");
       tempDiv.innerHTML = htmlString;
@@ -20,6 +25,7 @@ const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick, created }
 
   return (
     <Box 
+      data-aos='flip-up' data-aos-duration='2000' data-aos-once='true'
       maxW="xl"
       borderWidth="1px"
       borderRadius="lg"
@@ -27,9 +33,13 @@ const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick, created }
       onClick={() => onPostClick(id)}
       _hover={{ shadow: "md", cursor: "pointer" }}
       bg="transparent"
-      color='white'
-      
+      color='white'      
     >
+    <motion.div
+      variants={cardVariants}
+      initial="initial"
+      animate="enter"
+      whileHover="hover">
       <Image
         src={coverPhoto || 'default_image_url'}
         alt='Article Cover Photo'
@@ -57,6 +67,7 @@ const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick, created }
           ))}
         </Box>
       </Box>
+      </motion.div>
     </Box>
   );
 };
