@@ -9,7 +9,7 @@ const Hero = ({ title, description, imageUrl, imageAlt }) => {
   };
   return (
     <>
-    <motion.div initial='hidden' animate='visible' variants={heroVariants} transition={{ duration: 3 }}>
+    <motion.div initial='hidden' animate='visible' variants={heroVariants} transition={{ duration: 2 }}>
     <Box bg="#040C18" color='white'>
       <Flex
         direction={{ base: "column", md: "row" }}
