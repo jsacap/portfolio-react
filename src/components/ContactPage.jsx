@@ -19,7 +19,9 @@ const ContactPage = () => {
     "
     imageUrl={imageUrl}
     />
+    <Box data-aos='zoom-in-up' data-aos-once='true' data-aos-duration='1500'>
     <ContactForm />
+    </Box>
 </Box>
 </>
   )
