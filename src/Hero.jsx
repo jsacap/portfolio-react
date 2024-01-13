@@ -25,6 +25,8 @@ const Hero = ({ title, description, imageUrl, imageAlt }) => {
         <Box flex="1" p={4}>
           <AspectRatio ratio={16 / 9} maxW={{ base: "100%", md: "80%" }} mx="auto">
             <Image
+              data-aos='flip-right'
+              data-aos-duration='1500'
               src={imageUrl}
               alt={imageAlt}
               borderRadius="lg"
