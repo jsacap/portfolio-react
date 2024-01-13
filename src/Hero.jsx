@@ -1,8 +1,15 @@
 import React from 'react';
 import { Box, Flex, VStack, Heading, Text, Image, AspectRatio } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 
 const Hero = ({ title, description, imageUrl, imageAlt }) => {
+  const heroVariants = {
+    hidden: { opacity: 0, y: 20},
+    visible: { opacity: 1, y:0 }
+  };
   return (
+    <>
+    <motion.div initial='hidden' animate='visible' variants={heroVariants} transition={{ duration: 3 }}>
     <Box bg="#040C18" color='white'>
       <Flex
         direction={{ base: "column", md: "row" }}
@@ -23,13 +30,15 @@ const Hero = ({ title, description, imageUrl, imageAlt }) => {
               borderRadius="lg"
               maxW="100%"
               objectFit="cover"
-              height={{ base: "auto", md: "400px" }}  // Responsive height
-              width={{ base: "auto", md: "680px" }}   // Responsive width
+              height={{ base: "auto", md: "400px" }} 
+              width={{ base: "auto", md: "680px" }}   
             />
           </AspectRatio>
         </Box>
       </Flex>
     </Box>
+    </motion.div>
+  </>
   );
 };
 
