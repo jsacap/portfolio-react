@@ -13,6 +13,7 @@ const useSubscriber = () => {
         })
         .then(response => {
             setSubscribers(response.data);
+            console.log(subscribers)
             setIsLoading(false);
         })
         .catch(error => {
@@ -65,7 +66,25 @@ const useSubscriber = () => {
         fetchSubscribers();
     }, []);
 
-    return { subscribers, isLoading, error, addSubscriber, deleteSubscriber };
+    const updateSubscriber = (subscriberId, updatedData) => {
+        setIsLoading(true);
+        axios.put(`http://localhost:8000/subscribers/${subscriberId}/`, updatedData, {
+            headers: { 'Authorization': `JWT ${localStorage.getItem('accessToken')}` }
+        })
+        .then(() => {
+            fetchSubscribers();
+        })
+        .catch(error => {
+            console.error('Error updating subscriber', error);
+            setError(error);
+        })
+        .finally(() => {
+            setIsLoading(false);
+        });
+    };
+    
+
+    return { subscribers, isLoading, error, addSubscriber, deleteSubscriber, updateSubscriber };
 };
 
 export default useSubscriber;

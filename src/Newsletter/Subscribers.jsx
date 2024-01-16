@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Box, Button, Input, Checkbox, Stack, useToast, VStack, HStack, Text, Center } from '@chakra-ui/react';
+import { Box, Button, Input, Checkbox, Stack, useToast, VStack, HStack, Text, Center, Spinner, TableContainer, Table, Thead, Tbody, Tr, Td, Th, ButtonGroup } from '@chakra-ui/react';
 import useSubscriber from '../components/Hooks/useSubscriber';
 import useSubscription from '../components/Hooks/useSubscription';
 
 const Subscribers = () => {
-    const { subscribers, addSubscriber, deleteSubscriber, isLoading: isSubscribersLoading, error: subscriberError } = useSubscriber();
+    const { subscribers, addSubscriber, deleteSubscriber, isLoading: isSubscribersLoading, error } = useSubscriber();
     const { subscriptions, isLoading: isSubscriptionsLoading } = useSubscription();
     const [newSubscriber, setNewSubscriber] = useState({ first_name: '', last_name: '', email: '', subscriptions: [] });
     const toast = useToast();
@@ -43,20 +43,46 @@ const Subscribers = () => {
     };
   
     return (
-      <Center h="100vh">
-        <Box p={5} maxW="600px" w="100%" mx="auto" boxShadow="xl" rounded="lg">
-          <VStack spacing={4}>
-            {isSubscribersLoading ? <Text>Loading subscribers...</Text> : subscribers.map(subscriber => (
-              <HStack key={subscriber.id} w="100%" justifyContent="space-between">
-                <Text>{`${subscriber.first_name} ${subscriber.last_name} - (${subscriber.email}) - Subscriptions: ${subscriber.subscription_names.join(', ')}`}</Text>
-
-
-                <Button colorScheme="red" size="sm" onClick={() => handleDelete(subscriber.id)}>
-                  X
-                </Button>
-              </HStack>
-            ))}
-            <VStack w="100%">
+      <Center h="100vh" bg='#040C18'>
+        <VStack>
+        <Box p={5} maxW="100%" w="100%" mx="auto" boxShadow="xl" rounded="lg">
+          <TableContainer>
+          <Table variant='striped'>
+            <Thead>
+              <Tr>
+                <Th>First Name</Th>
+                <Th>Last Name</Th>
+                <Th>Email</Th>
+                <Th>Subscriptions</Th>
+                <Th>Actions</Th> {/* Assuming you have a header for the actions column */}
+              </Tr>
+            </Thead>
+            <Tbody>
+              {isSubscribersLoading ? (
+                <Tr>
+                  <Td colSpan="5" style={{ textAlign: 'center' }}>
+                    <Spinner />
+                  </Td>
+                </Tr>
+              ) : (
+                subscribers.map(subscriber => (
+                  <Tr key={subscriber.id}>
+                    <Td>{subscriber.first_name}</Td>
+                    <Td>{subscriber.last_name}</Td>
+                    <Td>{subscriber.email}</Td>
+                    <Td>{subscriber.subscription_names.join(', ')}</Td>
+                    <Td>
+                      <Button colorScheme='red' size='sm' onClick={() => handleDelete(subscriber.id)}>
+                        X
+                      </Button>
+                    </Td>
+                  </Tr>
+                ))
+              )}
+            </Tbody>
+          </Table>
+        </TableContainer>
+        </Box>
               <Input
                 placeholder="First Name"
                 value={newSubscriber.first_name}
@@ -87,8 +113,7 @@ const Subscribers = () => {
               </Stack>
               <Button colorScheme="blue" onClick={handleAdd}>Add</Button>
             </VStack>
-          </VStack>
-        </Box>
+        
       </Center>
     );
   };
