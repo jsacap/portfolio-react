@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Input, Checkbox, Stack, useToast, VStack, HStack, Text, Center, Spinner, TableContainer, Table, Thead, Tbody, Tr, Td, Th, ButtonGroup } from '@chakra-ui/react';
+import { Box, Button, Input, Checkbox, Stack, useToast, VStack, HStack, Text, Center, Spinner, TableContainer, Table, Thead, Tbody, Tr, Td, Th, ButtonGroup, Heading, CardHeader } from '@chakra-ui/react';
 import useSubscriber from '../components/Hooks/useSubscriber';
 import useSubscription from '../components/Hooks/useSubscription';
 
@@ -45,6 +45,7 @@ const Subscribers = () => {
     return (
       <Center h="100vh" bg='#040C18'>
         <VStack>
+        <Heading size='XL'>SUBSCRIBERS</Heading>
         <Box p={5} maxW="100%" w="100%" mx="auto" boxShadow="xl" rounded="lg">
           <TableContainer>
           <Table variant='striped'>
@@ -83,6 +84,8 @@ const Subscribers = () => {
           </Table>
         </TableContainer>
         </Box>
+        <br />
+        <Heading size='lg'>New Subscriber</Heading>
               <Input
                 placeholder="First Name"
                 value={newSubscriber.first_name}
