@@ -16,7 +16,7 @@ const useSubscription = () => {
             setIsLoading(false);
         })
         .catch(error => {
-            console.error('Error fetching data', error);
+            console.error('Error fetching subscriptions', error);
             setError(error);
             setIsLoading(false);
         });
@@ -28,7 +28,7 @@ const useSubscription = () => {
             headers: { 'Authorization': `JWT ${localStorage.getItem('accessToken')}` }
         })
         .then(() => {
-            fetchSubscriptions(); // Refresh list after adding
+            fetchSubscriptions();
         })
         .catch(error => {
             console.error('Error adding subscription', error);
@@ -45,7 +45,7 @@ const useSubscription = () => {
             headers: { 'Authorization': `JWT ${localStorage.getItem('accessToken')}` }
         })
         .then(() => {
-            fetchSubscriptions(); // Refresh list after deletion
+            fetchSubscriptions();
         })
         .catch(error => {
             console.error('Error deleting subscription', error);
@@ -57,7 +57,7 @@ const useSubscription = () => {
     };
 
     useEffect(() => {
-        fetchSubscriptions();        
+        fetchSubscriptions();
     }, []);
 
     return { subscriptions, isLoading, error, addSubscription, deleteSubscription };

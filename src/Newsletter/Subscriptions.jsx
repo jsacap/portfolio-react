@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Button, Input, useToast, VStack, HStack, Text, Center } from '@chakra-ui/react';
-import useSubscription from '../components/Hooks/useSubscriber';
+import useSubscription from '../components/Hooks/useSubscription';
 
 const Subscriptions = () => {
   const { subscriptions, addSubscription, deleteSubscription, isLoading, error } = useSubscription();
