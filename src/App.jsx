@@ -18,6 +18,7 @@ import 'aos/dist/aos.css';
 
 import TagsPage from './components/Tags/TagPage.jsx';
 import { ChakraProvider } from '@chakra-ui/react';
+import Subscriptions from './Newsletter/Subscriptions.jsx';
 
 function App() {
   const [isLoggedin, setIsLoggedIn ] = useState(false);
@@ -48,6 +49,7 @@ function App() {
           <Route path="/test" element={<SandBox />} />
           <Route path="/tags" element={<TagsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/subscriptions" element={<Subscriptions />} />
 
         </Routes>
       </div>

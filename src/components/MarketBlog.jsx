@@ -9,7 +9,8 @@ import useArticles from './Hooks/useArticles';
 const MarketBlog = () => {
   const { articles, loading } = useArticles('https://jsax-production.up.railway.app/blog/api/', 'Private_Investor');
   const navigate = useNavigate();
-  const imageUrl = '/marketinsightsimage.jpg';
+  const imageUrl = '/chart.gif';
+  const videoUrl = '/analysis_-_31251 (720p).mp4'
 
   const handlePostClick = (id) => {
     navigate(`/marketblog/article/${id}`);
@@ -17,7 +18,7 @@ const MarketBlog = () => {
 
   return (
     <>
-      <Hero
+      <Hero        
         title="Market Insights"
         description="On this page, I share my insights and research, blending fundamental 
                     and technical analysis across diverse markets. Since beginning my trading journey 
@@ -27,7 +28,7 @@ const MarketBlog = () => {
                     emphasis on understanding the reasons behind price movements and recognising the significance 
                     of historical patterns. My approach is about delving deep into the 'how' and 'why' of market 
                     trends, offering readers a comprehensive and insightful view."
-        imageUrl={imageUrl}
+        videoUrl={videoUrl}
         imageAlt="Market Insights Image"
       />
       <Box className='jsa__blog-page' bg="#040C18">
