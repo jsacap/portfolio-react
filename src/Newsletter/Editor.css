@@ -1,0 +1,7 @@
+.editor-container {
+    max-width: 700px; /* Max width of the editor */
+    margin: 0 auto; /* Centering the editor */
+    padding: 20px; /* Padding inside the editor */
+    border: 1px solid #dcdcdc; /* Border for the box */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

@@ -1,34 +1,37 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import '../Newsletter/Editor.css'; // Import custom CSS
 
 export default function Editor({ value, onChange }) {
-  const editorStyle = {
-    maxHeight: '400px', 
-    maxWidth: '1500px', 
-    overflow: 'auto', 
-  };
-
   return (
-    <div style={editorStyle}>
+    <div className="editor-container">
       <ReactQuill
         value={value}
-        modules={{
-          toolbar: [
-            [{ header: [1, 2, false] }],
-            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            ['link', 'image'],
-            ['clean'],
-          ],
-        }}
-        formats={[
-          'header',
-          'bold', 'italic', 'underline', 'strike', 'blockquote',
-          'list', 'bullet',
-          'link', 'image',
-        ]}
         onChange={onChange}
+        modules={Editor.modules}
+        formats={Editor.formats}
       />
     </div>
   );
 }
+
+// Add modules and formats as static properties
+Editor.modules = {
+  toolbar: [
+    [{ header: '1' }, { header: '2' }, { font: [] }],
+    [{ size: [] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{ list: 'ordered' }, { list: 'bullet' }],
+    ['link', 'image', 'video'],
+    ['clean'],
+    ['code-block'],
+  ],
+};
+
+Editor.formats = [
+  'header', 'font', 'size',
+  'bold', 'italic', 'underline', 'strike', 'blockquote',
+  'list', 'bullet',
+  'link', 'image', 'video',
+  'clean', 'code-block',
+];

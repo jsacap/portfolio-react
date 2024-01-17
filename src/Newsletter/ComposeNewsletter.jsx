@@ -4,6 +4,7 @@ import useSubscriber from '../components/Hooks/useSubscriber';
 import useSubscription from '../components/hooks/useSubscription';
 import { sendNewsletter } from './sendNewsletter';
 import { FormControl, FormLabel, Input, Select, Button, Box, Heading, useToast, Center } from '@chakra-ui/react';
+import createEmailHtml from './createEmailHtml';
 
 
 const ComposeNewsletter = () => {
@@ -15,6 +16,7 @@ const ComposeNewsletter = () => {
 
     const handleSubmit = async (event) => {
       event.preventDefault();
+      const formattedContent = createEmailHtml(content);
       const newsletterData = { subject, message: content, subscription: selectedSubscription };
 
       try {
