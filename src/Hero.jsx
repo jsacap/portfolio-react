@@ -15,7 +15,6 @@ const Hero = ({ title, description, imageUrl, imageAlt, videoUrl }) => {
           data-aos='flip-right'
           data-aos-duration='1500'
           autoPlay
-          loop
           muted
           style={{ borderRadius: 'lg', maxWidth: '100%', objectFit: 'cover', height: 'auto', width: '100%' }}
         >
@@ -43,7 +42,7 @@ const Hero = ({ title, description, imageUrl, imageAlt, videoUrl }) => {
   return (
     <>
       <motion.div initial='hidden' animate='visible' variants={heroVariants} transition={{ duration: 2 }}>
-        <Box bg="#040C18" color='white'>
+        <Box className='hero' color='white'>
           <Flex
             direction={{ base: "column", md: "row" }}
             justify="space-between"
