@@ -509,3 +509,12 @@
   .brand-padding {
     padding: 15px;
   }
+
+  .editor-container {
+    max-width: 600px; /* Max width of the editor */
+    margin: 0 auto; /* Centering the editor */
+    padding: 20px; /* Padding inside the editor */
+    background-color: #ffffff; /* Background color */
+    border: 1px solid #dcdcdc; /* Border for the box */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adding some shadow for aesthetics */
+}

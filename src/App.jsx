@@ -20,6 +20,7 @@ import TagsPage from './components/Tags/TagPage.jsx';
 import { ChakraProvider } from '@chakra-ui/react';
 import Subscriptions from './Newsletter/Subscriptions.jsx';
 import Subscribers from './Newsletter/Subscribers.jsx';
+import ComposeNewsletter from './Newsletter/ComposeNewsletter.jsx';
 
 function App() {
   const [isLoggedin, setIsLoggedIn ] = useState(false);
@@ -52,6 +53,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/subscriptions" element={<Subscriptions />} />
           <Route path="/subscribers" element={<Subscribers />} />
+          <Route path="/composenewsletter" element={<ComposeNewsletter />} />
 
         </Routes>
       </div>

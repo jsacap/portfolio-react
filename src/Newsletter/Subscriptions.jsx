@@ -7,28 +7,7 @@ const Subscriptions = () => {
   const [newSubscriptionName, setNewSubscriptionName] = useState('');
   const toast = useToast();
 
-  const handleDelete = (subscriptionId) => {
-    deleteSubscription(subscriptionId);
-    toast({
-      title: 'Subscription deleted.',
-      description: "The subscription has been successfully deleted.",
-      status: 'success',
-      duration: 2000,
-      isClosable: true,
-    });
-  };
-
-  const handleAdd = () => {
-    addSubscription({ name: newSubscriptionName });
-    setNewSubscriptionName('');
-    toast({
-      title: 'Subscription added.',
-      description: "A new subscription has been successfully added.",
-      status: 'success',
-      duration: 2000,
-      isClosable: true,
-    });
-  };
+  
 
   // Handling errors with a toast
   if (error) {

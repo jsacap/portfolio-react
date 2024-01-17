@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Button, Input, Checkbox, Stack, useToast, VStack, HStack, Text, Center, Spinner, TableContainer, Table, Thead, Tbody, Tr, Td, Th, ButtonGroup, Heading, CardHeader } from '@chakra-ui/react';
 import useSubscriber from '../components/Hooks/useSubscriber';
-import useSubscription from '../components/Hooks/useSubscription';
+import axios from 'axios';
 
 const Subscribers = () => {
     const { subscribers, addSubscriber, deleteSubscriber, isLoading: isSubscribersLoading, error } = useSubscriber();
@@ -55,18 +55,11 @@ const Subscribers = () => {
                 <Th>Last Name</Th>
                 <Th>Email</Th>
                 <Th>Subscriptions</Th>
-                <Th>Actions</Th> {/* Assuming you have a header for the actions column */}
+                <Th>Actions</Th>
               </Tr>
             </Thead>
             <Tbody>
-              {isSubscribersLoading ? (
-                <Tr>
-                  <Td colSpan="5" style={{ textAlign: 'center' }}>
-                    <Spinner />
-                  </Td>
-                </Tr>
-              ) : (
-                subscribers.map(subscriber => (
+              {subscribers.map(subscriber => (
                   <Tr key={subscriber.id}>
                     <Td>{subscriber.first_name}</Td>
                     <Td>{subscriber.last_name}</Td>
@@ -78,8 +71,7 @@ const Subscribers = () => {
                       </Button>
                     </Td>
                   </Tr>
-                ))
-              )}
+                ))}
             </Tbody>
           </Table>
         </TableContainer>
