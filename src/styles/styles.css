@@ -9,7 +9,7 @@
   
   --color-bg: #040C18;
   --color-footer : #031B34;
-  --color-blog: #042c54;
+  --color-blog: #040C18;
   --color-text: #f2f3f4;
   --color-subtext: #FF8A71;
 }
@@ -517,24 +517,24 @@
 
 
 .techstack {
-    display: flex; /* Changed to flex for seamless scrolling */
+    display: flex;
     overflow: hidden;
     white-space: nowrap;
-    padding: 60px 0; /* Padding top and bottom */
+    padding: 60px 0; 
 }
 
 .techstack-item {
-    display: flex; /* Align icon and text horizontally */
-    align-items: center; /* Center items vertically */
-    margin-right: 20px; /* Space between each item */
-    /* animation: scroll 5s linear infinite; Adjusted for smoother scrolling */
+    display: flex; 
+    align-items: center;
+    margin-right: 20px; 
+    animation: scroll 10s linear infinite;
 }
 
 .techstack-item span {
-    margin-left: 10px; /* Space between icon and text */
+    margin-left: 10px; 
 }
 
 @keyframes scroll {
     0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); } /* Translate only half for seamless loop */
+    100% { transform: translateX(-50%); } 
 }

@@ -15,6 +15,8 @@ import SandBox from './components/SandBox.jsx';
 import ContactPage from './components/ContactPage.jsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 import TagsPage from './components/Tags/TagPage.jsx';
 import { ChakraProvider } from '@chakra-ui/react';

@@ -4,8 +4,11 @@ import BlogCard from './BlogCard';
 import { Box, SimpleGrid, Flex, Center, Heading } from '@chakra-ui/react';
 import Hero from '../Hero';
 
+
+
 import CardSkeleton from './CardSkeleton';
 import TechStack from './TechStack';
+import BasicCarousel from './BasicCarousel';
 
 const PostsList = () => {
   const videoUrl = '/world.webm'
@@ -48,9 +51,11 @@ const PostsList = () => {
         bg={'#040C18'}
       >
       </Flex>
-      <Center bg='#040C18' maxW='100%'>
+      
       <TechStack />
-      </Center>
+      
+            
+      
       <Box p={4} bg={'#040C18'} color='white'>
 
         <SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing="20px">

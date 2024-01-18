@@ -1,13 +1,17 @@
-import React, { useEffect, useRef } from 'react';
-import { Center, HStack, Text, VStack, Container, Heading } from '@chakra-ui/react';
-import { FaPython, FaReact, FaCss3Alt, FaHtml5, } from 'react-icons/fa';
+import React from 'react';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import { Heading } from '@chakra-ui/react';
+import { FaPython, FaReact, FaCss3Alt, FaHtml5 } from 'react-icons/fa';
 import { SiDjango, SiPandas, SiNumpy, SiStreamlit, SiPlotly, SiTypescript } from 'react-icons/si';
 import { IoLogoJavascript } from "react-icons/io5";
-import { DiDjango } from 'react-icons/di'
-const iconSize = '24px'
+import { DiDjango } from 'react-icons/di';
+
+const iconSize = '50px';
 
 const technologies = [
-    { icon: <FaReact size={iconSize} />,  name: 'React' },
+    { icon: <FaReact size={iconSize} />, name: 'React' },
     { icon: <SiDjango size={iconSize} />, name: 'Django' },
     { icon: <FaPython size={iconSize} />, name: 'Python' },
     { icon: <IoLogoJavascript size={iconSize} />, name: 'JavaScript' },
@@ -21,39 +25,31 @@ const technologies = [
     { icon: <SiTypescript size={iconSize} />, name: 'TypeScript' },
 ];
 
-const TechnologyItems = () => {
-    const scrollRef = useRef(null);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            if (scrollRef.current) {
-                scrollRef.current.scrollLeft += 1; 
-            }
-        }, 20);
-
-        return () => clearInterval(interval);
-    }, []);
+const TechStack = () => {
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 5000, 
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 200,
+        pauseOnHover: true,
+    };
 
     return (
-        <div>
-            <Heading size='lg' textAlign="center">Technologies</Heading>
-            <div className='techstack'>
+        <div className='jsa__blog-page'>
+            <Heading size='lg' textAlign="center" mb={4}>Technologies</Heading>
+            <Slider {...settings}>
                 {technologies.map((tech, index) => (
-                    <div key={index} className="techstack-item">
+                    <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '10px' }}>
                         {tech.icon}
-                        <span>{tech.name}</span>
+                        <span style={{ marginTop: '10px' }}>{tech.name}</span>
                     </div>
                 ))}
-            </div>
+            </Slider>
         </div>
     );
-    
-    
-    
-};
-
-const TechStack = () => {
-    return <TechnologyItems />;
 };
 
 export default TechStack;
