@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Editor from '../components/Editor';
-import useSubscriber from '../components/Hooks/useSubscriber';
-import useSubscription from '../components/hooks/useSubscription';
+import Editor from '../Editor'
+import useSubscriber from '../Hooks/useSubscriber';
+import useSubscription from '../hooks/useSubscription';
 import { sendNewsletter } from './sendNewsletter';
 import { FormControl, FormLabel, Input, Select, Button, Box, Heading, useToast, Center } from '@chakra-ui/react';
 import createEmailHtml from './createEmailHtml';

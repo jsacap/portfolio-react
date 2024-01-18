@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Button, Input, Checkbox, Stack, useToast, VStack, HStack, Text, Center, Spinner, TableContainer, Table, Thead, Tbody, Tr, Td, Th, ButtonGroup, Heading, CardHeader } from '@chakra-ui/react';
-import useSubscriber from '../components/Hooks/useSubscriber';
+import useSubscriber from '../Hooks/useSubscriber';
 import axios from 'axios';
 
 const Subscribers = () => {

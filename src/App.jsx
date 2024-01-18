@@ -20,9 +20,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 import TagsPage from './components/Tags/TagPage.jsx';
 import { ChakraProvider } from '@chakra-ui/react';
-import Subscriptions from './Newsletter/Subscriptions.jsx';
-import Subscribers from './Newsletter/Subscribers.jsx';
-import ComposeNewsletter from './Newsletter/ComposeNewsletter.jsx';
+import Subscriptions from './components/Newsletter/Subscriptions.jsx';
+import Subscribers from './components/Newsletter/Subscribers.jsx';
+import ComposeNewsletter from './components/Newsletter/ComposeNewsletter.jsx';
 
 function App() {
   const [isLoggedin, setIsLoggedIn ] = useState(false);

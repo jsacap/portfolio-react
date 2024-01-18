@@ -1,6 +1,6 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import '../Newsletter/Editor.css'; // Import custom CSS
+import '../components/Newsletter/Editor.css'; 
 
 export default function Editor({ value, onChange }) {
   return (
