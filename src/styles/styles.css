@@ -510,7 +510,7 @@
     padding: 15px;
   }
 
-.hero {
+.home__hero {
     background: rgb(2,0,36);
     background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,59,71,1) 0%, rgba(10,30,60,1) 0%, rgba(8,24,47,1) 28%, rgba(7,20,38,1) 48%, rgba(4,12,24,1) 77%, rgba(4,12,24,1) 100%);
 }
@@ -537,4 +537,104 @@
 @keyframes scroll {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-50%); } 
+}
+
+/* HOME */
+.home__hero {
+    height: 100vh;
+    position: relative;
+    color: #fff;
+}
+
+.home__hero .home__hero-content {
+    text-align: center;
+    position: absolute;
+}
+
+.home__hero .overlay-itro {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0px;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.home__hero .home__hero-title {
+    color: #fff;
+    font-weight: 600;
+    font-size: 3rem;
+}
+
+@media (min-width: 768px) {
+    .home__hero .home__hero-title {
+        font-size: 4.5rem;
+    }
+}
+
+.home__hero .home__hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+@media (min-width: 768px) {
+    .home__hero .home__hero-subtitle {
+        font-size: 2.5rem;
+    }
+}
+
+.home__hero .text-slider-items {
+    display: none;
+}
+
+.home__hero-single {
+    height: 350px;
+}
+
+.home__hero-single .home__hero-content {
+    margin-top: 30px;
+}
+
+.home__hero-single .home__hero-title {
+    text-transform: uppercase;
+    font-size: 3rem;
+}
+
+@media (min-width: 768px) {
+    .home__hero-single .home__hero-title {
+        font-size: 3.5rem;
+    }
+}
+
+.home__hero-single .breadcrumb {
+    background-color: transparent;
+    color: #0078ff;
+}
+
+.home__hero-single .breadcrumb .breadcrumb-item:before {
+    color: #cde1f8;
+}
+
+.home__hero-single .breadcrumb .breadcrumb-item.active {
+    color: #cde1f8;
+}
+
+.bg-image {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center center;
+}
+
+.display-table {
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+.table-cell {
+    display: table-cell;
+    vertical-align: middle;
 }

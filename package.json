@@ -31,6 +31,7 @@
     "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.1",
     "styled-normalize": "^8.1.0",
+    "typed.js": "^2.1.0",
     "universal-cookie": "^6.1.1"
   },
   "devDependencies": {

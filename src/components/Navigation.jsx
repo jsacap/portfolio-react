@@ -49,7 +49,7 @@ export function Navigation() {
     <Box color='white' as="nav" bg="navbar-transparent" p={4}>
       <Flex justifyContent="space-between" alignItems="center">
         {/* Logo/Brand Name */}
-        <Link as={RouterLink} to="/" fontWeight="bold" textDecoration='none' _hover={{ textDecoration: 'none'}} className='brand-padding'>
+        <Link as={RouterLink} to="/home" fontWeight="bold" textDecoration='none' _hover={{ textDecoration: 'none'}} className='brand-padding'>
           Sancho Jr. Alegre
         </Link>
 
