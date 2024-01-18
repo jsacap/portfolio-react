@@ -8,7 +8,7 @@ const useSubscription = () => {
 
     const fetchSubscriptions = () => {
         setIsLoading(true);
-        axios.get('http://localhost:8000/subscriptions/', {
+        axios.get('https://portfolio-backend-production-sanchojralegre.up.railway.app/subscriptions/', {
             headers: { 'Authorization': `JWT ${localStorage.getItem('accessToken')}` }
         })
         .then(response => {
