@@ -15,6 +15,7 @@ const Hero = ({ title, description, imageUrl, imageAlt, videoUrl }) => {
           data-aos='flip-right'
           data-aos-duration='1500'
           autoPlay
+          loop
           muted
           style={{ borderRadius: 'lg', maxWidth: '100%', objectFit: 'cover', height: 'auto', width: '100%' }}
         >

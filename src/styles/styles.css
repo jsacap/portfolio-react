@@ -514,3 +514,27 @@
     background: rgb(2,0,36);
     background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,59,71,1) 0%, rgba(10,30,60,1) 0%, rgba(8,24,47,1) 28%, rgba(7,20,38,1) 48%, rgba(4,12,24,1) 77%, rgba(4,12,24,1) 100%);
 }
+
+
+.techstack {
+    display: flex; /* Changed to flex for seamless scrolling */
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 60px 0; /* Padding top and bottom */
+}
+
+.techstack-item {
+    display: flex; /* Align icon and text horizontally */
+    align-items: center; /* Center items vertically */
+    margin-right: 20px; /* Space between each item */
+    /* animation: scroll 5s linear infinite; Adjusted for smoother scrolling */
+}
+
+.techstack-item span {
+    margin-left: 10px; /* Space between icon and text */
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); } /* Translate only half for seamless loop */
+}
