@@ -8,7 +8,7 @@ const BlogCard = ({ id, coverPhoto, title, content, tags, created }) => {
   const cardVariants = {
     initial: { opacity: 0, y: 10 },
     enter: { opacity: 1, y: 0 },
-    hover: { scale: 1.1 }
+    hover: { scale: 1.05 }
   }
   const navigate = useNavigate();
   const handlePostClick = () => {

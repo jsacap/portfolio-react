@@ -6,7 +6,7 @@ const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick, created }
   const cardVariants = {
     initial: { opacity: 0, y: 10 },
     enter: { opacity: 1, y: 0 },
-    hover: { scale: 1.1 }
+    hover: { scale: 1.05 }
   };
   const stripHtml = (htmlString) => {
     const tempDiv = document.createElement("div");
