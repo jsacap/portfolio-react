@@ -49,7 +49,7 @@ export function Navigation() {
     <Box color='white' as="nav" bg="navbar-transparent" p={4}>
       <Flex justifyContent="space-between" alignItems="center">
         {/* Logo/Brand Name */}
-        <Link as={RouterLink} to="/home" fontWeight="bold" textDecoration='none' _hover={{ textDecoration: 'none'}} className='brand-padding'>
+        <Link as={RouterLink} to="/" fontWeight="bold" textDecoration='none' _hover={{ textDecoration: 'none'}} className='brand-padding'>
           Sancho Jr. Alegre
         </Link>
 
@@ -58,7 +58,7 @@ export function Navigation() {
 
         {/* Desktop Links */}
         <HStack spacing={4} display={{ base: "none", md: "flex" }} position="relative">
-          <Link as={RouterLink} to="/" {...linkProps('/projects')}>Projects</Link>
+          <Link as={RouterLink} to="/projects" {...linkProps('/projects')}>Projects</Link>
           <Link as={RouterLink} to="/marketblog" {...linkProps('/marketblog')}>Market Insights</Link>
           
           {/* Motion Underline */}
