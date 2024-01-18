@@ -40,10 +40,10 @@ function App() {
           <Navigation />
         </div>
         <Routes>
-          <Route path="/" element={<PostsList />} />
+          <Route path="/projects" element={<PostsList />} />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="/logout" element={<Logout setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/post" element={<PostPage />} />  
           <Route path="/postlist" element={<PostsList />} /> 
           <Route path="/blog/article/:id" element={<SinglePostPage />} />

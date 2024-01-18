@@ -510,7 +510,7 @@
     padding: 15px;
   }
 
-.home__hero {
+.hero {
     background: rgb(2,0,36);
     background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,59,71,1) 0%, rgba(10,30,60,1) 0%, rgba(8,24,47,1) 28%, rgba(7,20,38,1) 48%, rgba(4,12,24,1) 77%, rgba(4,12,24,1) 100%);
 }

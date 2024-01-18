@@ -89,7 +89,7 @@ export function Navigation() {
           <DrawerHeader>Menu</DrawerHeader>
           <DrawerBody>
             <VStack spacing={4} align="start" mt={4}>
-              <Link as={RouterLink} to="/" onClick={onClose}>Projects</Link>
+              <Link as={RouterLink} to="/projects" onClick={onClose}>Projects</Link>
               <Link as={RouterLink} to="/marketblog" onClick={onClose}>Market Insights</Link>
               <Link as={RouterLink} to="/contact" onClick={onClose}>Contact Me</Link>
             </VStack>
