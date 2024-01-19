@@ -39,8 +39,8 @@ const Skills = () => {
             <div className='section-title'>
             <h2>Full-Stack Development</h2>
             <p>
-                Skills spans across the full spectrum of web development, encompassing front-end 
-                and back-end technologies, database management, and API integration.
+            Skills span across the full spectrum of web development, encompassing front-end and back-end technologies, 
+            database management, API integration, as well as advanced techniques for data analysis and visualization.
             </p>
             </div>
 
