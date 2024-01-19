@@ -12,7 +12,7 @@ const BlogCard = ({ id, coverPhoto, title, content, tags, created }) => {
   }
   const navigate = useNavigate();
   const handlePostClick = () => {
-    navigate(`blog/article/${id}`)
+    navigate(`/blog/article/${id}`)
   }
   
   return (
