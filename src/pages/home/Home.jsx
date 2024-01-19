@@ -1,7 +1,14 @@
 import React, { useEffect } from 'react';
 import Typed from 'typed.js';
+import LatestProjects from './LatestProjects';
+import { Box } from '@chakra-ui/react';
+import { SiDjango, SiReact, SiJavascript, SiHtml5, SiCss3, SiSkillshare } from 'react-icons/si'; // Import other icons as needed
+import Slider from 'react-slick';
+import Skills from './skills';
+
 
 const Home = () => {
+
     const bgImage = "url('/home/hero-bg.jpg')";
 
     useEffect(() => {
@@ -19,6 +26,7 @@ const Home = () => {
     }, []);
 
     return (
+        <>
         <div id="hero" className="home__hero route bg-image" style={{ backgroundImage: bgImage }}>
             <div className='overlay-itro'></div>
             <div className='home__hero-content display-table'>
@@ -32,6 +40,12 @@ const Home = () => {
                 </div>
             </div>
         </div>
+
+
+
+        <Skills />
+        
+        </>
     )
 }
 
