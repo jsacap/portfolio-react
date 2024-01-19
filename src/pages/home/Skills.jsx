@@ -18,8 +18,17 @@ const Skills = () => {
         slidesToScroll: 1,
         autoplay: true, 
         autoplaySpeed: 500,
-        pauseOnHover: true
-      };
+        pauseOnHover: true,
+        responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              }
+            },
+          ]
+        };     
       
 
   return (
