@@ -1,5 +1,5 @@
 import React from 'react';
-import Skills from './skills';
+import Skills from './Skills';
 import Header from './Header'
 import MarketExperience from './MarketExperience';
 
