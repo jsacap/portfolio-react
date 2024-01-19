@@ -768,7 +768,7 @@ section {
 }
 
 .slick-dots li button:before {
-    font-size: 26px;
-    color: darkblue;
+    font-size: 10px;
+    color: #0078ff;
   }
   
