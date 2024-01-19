@@ -40,8 +40,9 @@ const MarketExperience = () => {
             <h2>TRADER & INVESTOR</h2>
             <p>
             Over 7 years of experience in FX and Commodity markets. Includes long-term stock investment 
-            strategies, using methods like Discounted Cash Flow for determining intrinsic values, coupled with Technical Analysis for optimal entry points. Portfolio is both self-funded and backed by proprietary trading firms.
-                Funded privately and through prop firms. 
+            strategies, using methods like Discounted Cash Flow for determining intrinsic values, coupled 
+            with Technical Analysis for optimal entry points. Portfolio is both self-funded and backed by 
+            proprietary trading firms.                 
             </p>
             </div>
 
