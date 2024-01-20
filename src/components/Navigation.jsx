@@ -58,6 +58,7 @@ export function Navigation() {
 
         {/* Desktop Links */}
         <HStack spacing={4} display={{ base: "none", md: "flex" }} position="relative">
+          <Link as={RouterLink} to="/" {...linkProps('/')}>HOME | </Link>
           <Link as={RouterLink} to="/projects" {...linkProps('/projects')}>Projects</Link>
           <Link as={RouterLink} to="/marketblog" {...linkProps('/marketblog')}>Market Insights</Link>
           
