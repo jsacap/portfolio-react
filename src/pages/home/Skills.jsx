@@ -8,7 +8,7 @@ import { DiDjango } from "react-icons/di";
 import { BiLogoPostgresql } from "react-icons/bi";
 import { TbBrandPython } from "react-icons/tb";
 import { HStack } from '@chakra-ui/react';
-import { FaCss3, FaNode } from 'react-icons/fa'
+import { FaCss3, FaNode, FaGithub } from 'react-icons/fa'
 import { AiFillHtml5, AiTwotoneHtml5 } from "react-icons/ai";
 
 
@@ -88,6 +88,14 @@ const Skills = () => {
                         <DiDjango size='60px' />
                     </HStack>
                     <p><strong>Django REST</strong> - Specialized in using Django REST framework for building scalable and maintainable APIs.</p>
+                    </div>
+                </div>
+                <div>
+                    <div className='skills-item'>
+                    <HStack justify='center'>
+                        <FaGithub size={iconSize} />
+                    </HStack>
+                    <p><strong>Git</strong> - Proficient in Git for version control and GitHub for source code management and collaboration, essential tools for modern software development workflows.</p>
                     </div>
                 </div>
                 <div>
