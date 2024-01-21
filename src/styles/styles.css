@@ -650,7 +650,9 @@
 
 .skills .skills-item {
   box-sizing: content-box;
+  text-align: center;
   min-height: 120px;
+  align-items: center;
 }
 
 .skills .skills-item .skills-img {
@@ -696,7 +698,6 @@
 }
 
 .skills .skills-item p {
-  font-style: italic;
   margin: 0 15px 0 15px;
   padding: 20px 20px 60px 20px;
   background: #fff;
