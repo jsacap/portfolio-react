@@ -708,6 +708,10 @@
   box-shadow: 0 0px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
+.skills-item svg {
+    margin-right: 1.8em;
+}
+
 .skills .swiper-pagination {
   margin-top: 20px;
   position: relative;

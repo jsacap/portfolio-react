@@ -2,9 +2,15 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
-import { SiDjango, SiReact, SiJavascript, SiHtml5, SiCss3, SiStreamlit, SiNumpy, SiPlotly, SiPandas } from 'react-icons/si';
+import { SiDjango, SiReact, SiHtml5, SiCss3, SiStreamlit, SiNumpy, SiPlotly, SiPandas, SiTypescript, SiScikitlearn  } from 'react-icons/si';
+import { IoLogoJavascript } from "react-icons/io";
 import { DiDjango } from "react-icons/di";
 import { BiLogoPostgresql } from "react-icons/bi";
+import { TbBrandPython } from "react-icons/tb";
+import { HStack } from '@chakra-ui/react';
+import { FaCss3, FaNode } from 'react-icons/fa'
+import { AiFillHtml5, AiTwotoneHtml5 } from "react-icons/ai";
+
 
 
 
@@ -47,70 +53,56 @@ const Skills = () => {
             <Slider {...settings}>
                 <div>
                     <div className='skills-item'>
-                    <SiDjango size={iconSize} />
-                    <p><strong>Django</strong> - A high-level Python web framework ideal for backend development. Used for clean, pragmatic design and provides a comprehensive suite of tools to build scalable web applications.</p>
+                        <HStack justify='center'>
+                            <TbBrandPython size={iconSize} />
+                            <SiDjango size={iconSize} />
+                            <BiLogoPostgresql size={iconSize} />
+                        </HStack>
+                    <p><strong>Python, Django & PostgreSQL</strong> - Python for versatile programming, Django for efficient backend development, and PostgreSQL for robust database management.</p>
                     </div>
                 </div>
                 <div>
                     <div className='skills-item'>
-                    <SiReact size={iconSize} />
-                    <p><strong>React</strong> A highly efficient JavaScript library for building dynamic and responsive user interfaces. React's component-based architecture streamlines the development of complex, interactive web applications.</p>
+                        <HStack justify='center' mr='4'>
+                            <SiReact size={iconSize} />
+                            <IoLogoJavascript size={iconSize} />
+                            <SiTypescript size={iconSize} />
+                            <FaNode size={iconSize} />
+                    </HStack>
+                    <p><strong>React, JavaScript, TypeScript & Node</strong> - A powerful combination for full-stack web development. React and JavaScript for the frontend, TypeScript for error-free code, and Node for the backend.</p>
                     </div>
                 </div>
                 <div>
                     <div className='skills-item'>
-                    <SiJavascript size={iconSize} />
-                    <p><strong>JavaScript</strong> A cornerstone of modern web development, JavaScript is an essential language for creating interactive and dynamic user experiences on the web. Its versatility extends from front-end browser scripting to back-end server applications.</p>
+                    <HStack justify='center'>
+                        <IoLogoJavascript size={iconSize} />
+                        <AiFillHtml5 size={iconSize} />
+                        <FaCss3 size={iconSize} />
+                    </HStack>
+                    <p><strong>HTML, CSS & JavaScript</strong> - The foundational trio for web development. HTML for structure, CSS for styling, and JavaScript for interactivity.</p>
                     </div>
                 </div>
                 <div>
                     <div className='skills-item'>
-                    <SiHtml5 size={iconSize} />
-                    <p><strong>HTML5</strong> The latest standard of HTML, offering new semantic elements and APIs for building modern, rich web experiences. HTML5 is fundamental for structuring the content of web applications and websites.</p>
+                    <HStack justify='center'>
+                        <DiDjango size='60px' />
+                    </HStack>
+                    <p><strong>Django REST</strong> - Specialized in using Django REST framework for building scalable and maintainable APIs.</p>
                     </div>
                 </div>
                 <div>
                     <div className='skills-item'>
-                    <SiCss3 size={iconSize} />
-                    <p><strong>CSS3</strong> An advanced version of CSS, it brings new features and capabilities to web design, allowing for more sophisticated styling, animations, and responsive layouts.</p>
+                        <HStack justify='center'>
+                            <SiStreamlit size={iconSize} />
+                            <SiNumpy size={iconSize} />
+                            <SiPlotly size={iconSize} />
+                            <SiPandas size={iconSize} />
+                            <SiScikitlearn size={iconSize} />
+                        </HStack>
+                    <p><strong>Streamlit, NumPy, Plotly, Pandas & Scikit-Learn</strong> - A suite of Python libraries for data analysis, visualization, and machine learning.</p>
                     </div>
                 </div>
-                <div>
-                    <div className='skills-item'>
-                        <SiPandas size={iconSize} /> {/* Replace with actual icon if available */}
-                        <p><strong>Pandas</strong> A versatile and powerful data analysis library for Python, perfect for data manipulation, cleaning, and exploration. Pandas is widely used in data science for its DataFrame functionality.</p>
-                    </div>
-                    </div>
-                    <div>
-                    <div className='skills-item'>
-                        <SiStreamlit size={iconSize} /> {/* Replace with actual icon if available */}
-                        <p><strong>Streamlit</strong> A revolutionary open-source app framework designed for Machine Learning and Data Science. Streamlit simplifies the process of turning data scripts into shareable web apps.</p>
-                    </div>
-                    </div>
-                    <div>
-                    <div className='skills-item'>
-                        <SiNumpy size={iconSize} />
-                        <p><strong>NumPy</strong> A foundational package for scientific computing in Python. NumPy offers powerful array objects, and is central to numerical computations in Python ecosystems.</p>
-                    </div>
-                    </div>
-                    <div>
-                    <div className='skills-item'>
-                        <SiPlotly size={iconSize} /> {/* Replace with actual icon if available */}
-                        <p><strong>Plotly</strong> - A versatile graphing library that supports interactive, publication-quality charts and graphs. Widely used for data visualization in both Python and JavaScript environments.</p>
-                    </div>
-                    </div>
-                    <div>
-                    <div className='skills-item'>
-                        <DiDjango size={iconSize} /> {/* Replace with actual icon if available */}
-                        <p><strong>Django REST API</strong> - A robust toolkit for building Web APIs with Django. It's known for its flexibility and power in creating scalable and maintainable web services.</p>
-                    </div>
-                    </div>
-                    <div>
-                    <div className='skills-item'>
-                        <BiLogoPostgresql size={iconSize} /> {/* Replace with actual icon if available */}
-                        <p><strong>PostgreSQL</strong> - An advanced, open source object-relational database system, known for its reliability, robustness, and performance in handling complex data operations.</p>
-                    </div>
-                </div>
+                
 
                 </Slider>
         </div>
