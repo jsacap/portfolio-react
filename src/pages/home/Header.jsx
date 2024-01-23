@@ -22,7 +22,7 @@ const Home = () => {
         <div id="hero" className="home__hero route bg-image" style={{ backgroundImage: bgImage }}>
             <div className='overlay-itro'></div>
             <div className='home__hero-content display-table'>
-                <div className='table-cell'>
+                <div className='table-cell' data-aos='zoom-in-down' data-aos-once='true' data-aos-duration='1500'>
                     <div className='container'>
                         <h1 className='home__hero-title mb-b'>Sancho Jr Alegre</h1>
                         <p className='home__hero-subtitle'>
