@@ -269,6 +269,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+
 
     padding: 2rem 6rem;
 }

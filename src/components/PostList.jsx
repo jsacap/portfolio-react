@@ -22,7 +22,7 @@ const PostsList = () => {
     const apiUrl = 'https://portfolio-backend-production-sanchojralegre.up.railway.app/post';
     axios.get(apiUrl)
       .then(response => {
-        setArticles(response.data);
+        setArticles([...response.data].reverse());;
         setLoading(false)
       })
       .catch(error => {
