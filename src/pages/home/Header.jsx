@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Typed from 'typed.js';
 
 const Home = () => {
-    const bgImage = "url('/home/hero-bg.jpg')";
+    const bgImage = "url('/home/bgimage.png')";
 
     useEffect(() => {
         const typed = new Typed('.typed', {
