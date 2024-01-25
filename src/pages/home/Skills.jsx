@@ -41,7 +41,7 @@ const Skills = () => {
     <>
     <section id='skills' className='skills section-bg'>
 
-        <div className='container' data-aos='fade-up'>
+        <div className='container' data-aos='fade-up' data-aos-duration='7000'>
             <div className='section-title'>
             <h2>Full-Stack Developer</h2>
             <p>
