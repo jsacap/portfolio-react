@@ -61,6 +61,8 @@ export function Navigation() {
           <Link as={RouterLink} to="/" {...linkProps('/')}>HOME | </Link>
           <Link as={RouterLink} to="/projects" {...linkProps('/projects')}>Projects</Link>
           <Link as={RouterLink} to="/marketblog" {...linkProps('/marketblog')}>Market Insights</Link>
+          <Link as={RouterLink} to="https://github.com/jsacap" isExternal><AiFillGithub /></Link>
+
           
           {/* Motion Underline */}
           <MotionUnderline {...underlineProps} />
@@ -69,7 +71,6 @@ export function Navigation() {
         {/* Right Side */}
         <HStack spacing={4} display={{ base: "none", md: "flex" }}>
         <Link as={RouterLink} to='/contact' {...linkProps('/contact')}>Contact</Link>
-          <Link as={RouterLink} to="https://github.com/jsacap" isExternal><AiFillGithub /></Link>
           {/* Conditional rendering based on login status */}
           {isLoggedIn() ? (
             <>
@@ -90,9 +91,10 @@ export function Navigation() {
           <DrawerHeader>Menu</DrawerHeader>
           <DrawerBody>
             <VStack spacing={4} align="start" mt={4}>
+              <Link as={RouterLink} to="/" onClick={onClose}>Home</Link>
               <Link as={RouterLink} to="/projects" onClick={onClose}>Projects</Link>
               <Link as={RouterLink} to="/marketblog" onClick={onClose}>Market Insights</Link>
-              <Link as={RouterLink} to="/contact" onClick={onClose}>Contact Me</Link>
+              <Link as={RouterLink} to="/contact" onClick={onClose}>Contact</Link>
             </VStack>
           </DrawerBody>
         </DrawerContent>
