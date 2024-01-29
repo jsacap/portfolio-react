@@ -5,6 +5,7 @@ import { PiStrategy } from "react-icons/pi";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -44,6 +45,7 @@ const MarketExperience = () => {
             with Technical Analysis for optimal entry points. Portfolio is both privately funded and backed by 
             proprietary trading firms.                 
             </p>
+            <Link to='/marketblog' className='btn btn-primary m-5'>Market Insights</Link>
             </div>
 
             <Slider {...settings}>

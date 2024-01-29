@@ -2,7 +2,8 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css';
-import { SiDjango, SiReact, SiHtml5, SiCss3, SiStreamlit, SiNumpy, SiPlotly, SiPandas, SiTypescript, SiScikitlearn  } from 'react-icons/si';
+import { SiDjango, SiReact, SiHtml5, SiCss3, SiStreamlit, SiNumpy, SiPlotly, SiPandas, SiTypescript, SiScikitlearn, SiDaisyui } from 'react-icons/si';
+import { BsBootstrap } from "react-icons/bs";
 import { IoLogoJavascript } from "react-icons/io";
 import { DiDjango } from "react-icons/di";
 import { BiLogoPostgresql } from "react-icons/bi";
@@ -10,6 +11,7 @@ import { TbBrandPython } from "react-icons/tb";
 import { HStack } from '@chakra-ui/react';
 import { FaCss3, FaNode, FaGithub } from 'react-icons/fa'
 import { AiFillHtml5, AiTwotoneHtml5 } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 
 
 
@@ -48,6 +50,7 @@ const Skills = () => {
                 Skills cover a wide range of web development and data science, including front-end and back-end technologies, 
                 database management, API integration, as well as advanced techniques for analysing and visualising data.
             </p>
+            <Link to='/projects' className='btn btn-primary m-5'> View Projects</Link>
             </div>
 
             <Slider {...settings}>
@@ -108,6 +111,15 @@ const Skills = () => {
                             <SiScikitlearn size={iconSize} />
                         </HStack>
                     <p><strong>Streamlit, NumPy, Plotly, Pandas & Scikit-Learn</strong> - A suite of Python libraries for data analysis, visualization, and machine learning.</p>
+                    </div>
+                </div>
+                <div>
+                    <div className='skills-item'>
+                        <HStack justify='center'>
+                            <SiDaisyui size={iconSize} />
+                            <BsBootstrap size={iconSize} />                        
+                        </HStack>
+                    <p><strong>Daisy UI and Bootsrap</strong> - Expertise in leveraging DaisyUI's Tailwind CSS-based component library for creating customizable and modern UIs, and Bootstrap for its extensive suite of pre-styled components, ensuring rapid and responsive web design.</p>
                     </div>
                 </div>
                 

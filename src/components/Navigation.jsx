@@ -85,9 +85,11 @@ export function Navigation() {
 
       {/* Drawer for Mobile Menu */}
       <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
+      
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
+          
           <DrawerHeader>Menu</DrawerHeader>
           <DrawerBody>
             <VStack spacing={4} align="start" mt={4}>
@@ -95,6 +97,7 @@ export function Navigation() {
               <Link as={RouterLink} to="/projects" onClick={onClose}>Projects</Link>
               <Link as={RouterLink} to="/marketblog" onClick={onClose}>Market Insights</Link>
               <Link as={RouterLink} to="/contact" onClick={onClose}>Contact</Link>
+              <Link as={RouterLink} to="https://github.com/jsacap" onClick={onClose} isExternal><AiFillGithub /></Link>
             </VStack>
           </DrawerBody>
         </DrawerContent>
