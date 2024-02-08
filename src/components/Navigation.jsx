@@ -61,6 +61,7 @@ export function Navigation() {
           <Link as={RouterLink} to="/" {...linkProps('/')}>HOME | </Link>
           <Link as={RouterLink} to="/projects" {...linkProps('/projects')}>Projects</Link>
           <Link as={RouterLink} to="/marketblog" {...linkProps('/marketblog')}>Market Insights</Link>
+          <Link as={RouterLink} to="https://jsa.capital/" isExternal>Trading Calendar</Link>
           <Link as={RouterLink} to="https://github.com/jsacap" isExternal><AiFillGithub /></Link>
 
           
@@ -97,6 +98,7 @@ export function Navigation() {
               <Link as={RouterLink} to="/projects" onClick={onClose}>Projects</Link>
               <Link as={RouterLink} to="/marketblog" onClick={onClose}>Market Insights</Link>
               <Link as={RouterLink} to="/contact" onClick={onClose}>Contact</Link>
+              <Link as={RouterLink} to="https://jsa.capital/" onClick={onClose} isExternal>Trading Calendar</Link>
               <Link as={RouterLink} to="https://github.com/jsacap" onClick={onClose} isExternal><AiFillGithub /></Link>
             </VStack>
           </DrawerBody>
