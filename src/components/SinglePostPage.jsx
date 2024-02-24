@@ -68,7 +68,12 @@ const SinglePostPage = () => {
           {title}
         </Heading>
 
-        <Box p={{ base: 1, md: 4 }} m={{ base: 0.5, md: 2 }} dangerouslySetInnerHTML={{ __html: content }} />
+        <Box 
+        p={{ base: 1, md: 4 }} 
+        m={{ base: 0.5, md: 2 }} 
+        dangerouslySetInnerHTML={{ __html: content }}
+        className='content-images' 
+        />
 
         {localStorage.getItem('accessToken') && (
           <Box display="flex" justifyContent="space-between" mt={6}>
