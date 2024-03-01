@@ -36,7 +36,7 @@ const MarketExperience = () => {
     <>
     <section id='skills' className='skills section-bg'>
 
-        <div className='container' data-aos='fade-up'>
+        <div className='container' data-aos='fade-up' onEndedCapture='true'>
             <div className='section-title'>
             <h2>TRADER & INVESTOR</h2>
             <p>

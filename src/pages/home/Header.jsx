@@ -3,7 +3,6 @@ import Typed from 'typed.js';
 import { Blurhash } from 'react-blurhash';
 
 const Home = () => {
-    // Adjust the image URL for direct use in the Image's src attribute
     const bgImageUrl = '/home/bgimage.png';
     const [imageLoaded, setImageLoaded] = useState(false);
 
@@ -32,7 +31,7 @@ const Home = () => {
     return (
         <>
             {!imageLoaded && (
-                <Blurhash hash='LEBDD^~q%N%Mo#oz%1xtIAM{M|IU' width='100%' height={600} resolutionX={32} resolutionY={32} punch={1} />
+                <Blurhash hash='LEBDD^~q%N%Mo#oz%1xtIAM{M|IU' width='100%' height='50%' />
             )}
             
             <div id="hero" className="home__hero route bg-image" style={imageLoaded ? { backgroundImage: `url(${bgImageUrl})` } : {}}>

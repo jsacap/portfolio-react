@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Box, Heading, Text, VStack, Image, Badge, HStack, Skeleton } from '@chakra-ui/react';
-import parse from 'html-react-parser';
-import { useNavigate } from 'react-router-dom';
+import { Badge, Box, HStack, Heading, Image, Skeleton, Text, VStack } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const BlogCard = ({ id, coverPhoto, title, content, tags, created }) => {
   const [imageLoaded, setImageLoaded] = useState(false); 
@@ -65,7 +64,7 @@ const BlogCard = ({ id, coverPhoto, title, content, tags, created }) => {
           objectFit="cover"
           display={imageLoaded ? "block" : "none"} 
           onLoad={() => setImageLoaded(true)} 
-          loading="lazy" 
+          loading="eager" 
         />
         <VStack p="4" align="start">
           <Heading size="md">{title}</Heading>
