@@ -1,24 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Image, Heading, Text, Badge, Skeleton } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick, created }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  
+  const [parsedContent, setParsedContent] = useState('');
+
+  useEffect(() => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(content, 'text/html');
+
+    // Modify image tags in the parsed content to enable lazy loading
+    const images = doc.querySelectorAll('img');
+    images.forEach(image => {
+      image.setAttribute('loading', 'lazy');
+    });
+
+    // Slice the content to get the first 300 characters as the preview
+    const contentPreview = content.slice(0, 300);
+    setParsedContent(contentPreview);
+  }, [content]);
+
   const cardVariants = {
     initial: { opacity: 0, y: 10 },
     enter: { opacity: 1, y: 0 },
     hover: { scale: 1.05 }
   };
-  
-  const stripHtml = (htmlString) => {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = htmlString;
-    return tempDiv.textContent || tempDiv.innerText || "";
-  };
-
-  const strippedContent = stripHtml(content);
-  const contentPreview = `${strippedContent.slice(0, 300)}...`;
 
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric'};
@@ -43,7 +50,8 @@ const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick, created }
         variants={cardVariants}
         initial="initial"
         animate="enter"
-        whileHover="hover">
+        whileHover="hover"
+      >
         {!imageLoaded && (
           <Skeleton height="300px" fadeDuration={1} />
         )}
@@ -60,7 +68,7 @@ const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick, created }
         <Box p="1"> 
           <Heading size="lg" mb="2">{title}</Heading> 
           <Text p="1" m="1" overflowY="auto">Written on - {formattedDate}</Text>
-          <Text p="1" m="1" overflowY="auto">{contentPreview}</Text>
+          <Text p="1" m="1" overflowY="auto">{parsedContent}...</Text> {/* Display the sliced content as the preview */}
           <Box display="flex" flexWrap="wrap"> 
             {Array.isArray(tags) && tags.map(tagName => (
               <Badge
