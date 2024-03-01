@@ -41,9 +41,8 @@ const MarketBlog = () => {
             </>
           ) : (
             articles.map(article => (
-              <div className='articlie-transition' key={article.id}>
               <BlogPost
-                
+                key={article.id}
                 id={article.id}              
                 coverPhoto={`https://jsax-production.up.railway.app${article.cover_photo}`}
                 title={article.title}
@@ -52,7 +51,6 @@ const MarketBlog = () => {
                 tags={article.tags.map(tag => tag.name)}
                 onPostClick={handlePostClick}
               />
-              </div>
             ))
           )}
         </SimpleGrid>
