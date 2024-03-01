@@ -1,8 +1,8 @@
-import React from 'react';
-import BlogPost from './BlogPost';
 import { Box, SimpleGrid } from '@chakra-ui/react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Hero from '../Hero';
+import BlogPost from './BlogPost';
 import CardSkeleton from './CardSkeleton';
 import useArticles from './Hooks/useArticles';
 
@@ -41,8 +41,9 @@ const MarketBlog = () => {
             </>
           ) : (
             articles.map(article => (
+              <div className='articlie-transition' key={article.id}>
               <BlogPost
-                key={article.id}
+                
                 id={article.id}              
                 coverPhoto={`https://jsax-production.up.railway.app${article.cover_photo}`}
                 title={article.title}
@@ -51,6 +52,7 @@ const MarketBlog = () => {
                 tags={article.tags.map(tag => tag.name)}
                 onPostClick={handlePostClick}
               />
+              </div>
             ))
           )}
         </SimpleGrid>

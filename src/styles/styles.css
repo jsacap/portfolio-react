@@ -784,7 +784,7 @@ section {
 
 .content-images img {
     width: 100%;
-    height: 450px;
+    height: 100%;
 }
 @media screen and (max-width: 768px){ 
     .content-images img {
@@ -793,3 +793,15 @@ section {
         object-fit: cover;
     }
 }
+
+.article-transition {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  
