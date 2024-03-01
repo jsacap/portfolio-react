@@ -72,7 +72,7 @@ const PostsList = () => {
               id={article.id}
               coverPhoto={article.cover_photo || 'default_image_url'}
               title={article.title}        
-              content={`{parse${article.content.slice(0, 300)}...`}
+              content={article.content}
               tags={article.tag_names}              
               
             />

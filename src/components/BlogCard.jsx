@@ -19,9 +19,22 @@ const BlogCard = ({ id, coverPhoto, title, content, tags, created }) => {
   };
 
   useEffect(() => {
-    const contentPreview = content.slice(0, 300);
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(content, 'text/html');
+  
+    // Extract text content from parsed HTML
+    const textContent = doc.body.textContent || '';
+  
+    // Slice the content to get the first 300 characters as the preview
+    const contentPreview = textContent.slice(0, 300);
+  
+    // Set the parsed content without HTML tags
     setParsedContent(contentPreview);
   }, [content]);
+  
+  
+  
+  
 
   return (
     <Box
@@ -56,7 +69,7 @@ const BlogCard = ({ id, coverPhoto, title, content, tags, created }) => {
         />
         <VStack p="4" align="start">
           <Heading size="md">{title}</Heading>
-          <Text>{parsedContent}...</Text> {/* Display the sliced content as the preview */}
+          <Text>{parsedContent}...</Text> 
           <HStack spacing={2} flexWrap='wrap'>
             {tags.map(tagName => (
               <Badge key={tagName} borderRadius="full" px="2" colorScheme="teal">

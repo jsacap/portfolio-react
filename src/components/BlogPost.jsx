@@ -9,17 +9,21 @@ const BlogPost = ({ id, title, coverPhoto, tags, content, onPostClick, created }
   useEffect(() => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(content, 'text/html');
-
+  
     // Modify image tags in the parsed content to enable lazy loading
     const images = doc.querySelectorAll('img');
     images.forEach(image => {
       image.setAttribute('loading', 'lazy');
     });
-
+  
+    // Extract text content without HTML tags
+    const contentText = doc.body.textContent || '';
+    
     // Slice the content to get the first 300 characters as the preview
-    const contentPreview = content.slice(0, 300);
+    const contentPreview = contentText.slice(0, 300);
     setParsedContent(contentPreview);
   }, [content]);
+  
 
   const cardVariants = {
     initial: { opacity: 0, y: 10 },
