@@ -31,7 +31,7 @@ const Home = () => {
     return (
         <>
             {!imageLoaded && (
-                <Blurhash hash='LEBDD^~q%N%Mo#oz%1xtIAM{M|IU' width='100%' height='50%' />
+                <Blurhash hash='LEBDD^~q%N%Mo#oz%1xtIAM{M|IU' width='100%' height='50%' resolutionX={32} resolutionY={32} punch={1}/>
             )}
             
             <div id="hero" className="home__hero route bg-image" style={imageLoaded ? { backgroundImage: `url(${bgImageUrl})` } : {}}>
