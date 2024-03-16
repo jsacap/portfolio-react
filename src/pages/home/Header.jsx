@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Typed from 'typed.js';
-import { Blurhash } from 'react-blurhash';
 
 const Home = () => {
     const bgImageUrl = '/home/bgimage.png';
     const [imageLoaded, setImageLoaded] = useState(false);
+    const tinyImage = '/home/blur.png'
 
     useEffect(() => {
         const img = new Image();
         img.onload = () => {
-            setImageLoaded(true);
+            setTimeout(() => {
+                setImageLoaded(true); 
+            });
         };
         img.src = bgImageUrl;
     }, [bgImageUrl]);
@@ -31,9 +33,17 @@ const Home = () => {
     return (
         <>
             {!imageLoaded && (
-                <Blurhash hash='LEBDD^~q%N%Mo#oz%1xtIAM{M|IU' width='100%' height='50%' resolutionX={32} resolutionY={32} punch={1}/>
+                <img
+                    src={tinyImage}
+                    alt='placeholder blurred image'
+                    style={{
+                        width: '100%',
+                        height: '100%', 
+                        objectFit: 'cover'                
+                    }}
+                />
             )}
-            
+
             <div id="hero" className="home__hero route bg-image" style={imageLoaded ? { backgroundImage: `url(${bgImageUrl})` } : {}}>
                 <div className='overlay-itro'></div>
                 <div className='home__hero-content display-table'>
