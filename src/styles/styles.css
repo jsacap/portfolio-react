@@ -547,7 +547,7 @@
 .home__hero {
     height: 100vh;
     position: relative;
-    color: #fff;
+    color: #040C18;
 }
 
 .home__hero .home__hero-content {
@@ -618,7 +618,7 @@
 }
 
 .home__hero-single .breadcrumb .breadcrumb-item:before {
-    color: #cde1f8;
+    color: #000913;
 }
 
 .home__hero-single .breadcrumb .breadcrumb-item.active {

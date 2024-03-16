@@ -35,6 +35,7 @@ const Hero = ({ title, description, imageUrl, imageAlt, videoUrl }) => {
           objectFit="cover"
           height={{ base: "auto", md: "400px" }} 
           width={{ base: "auto", md: "680px" }}
+          loading='lazy'
         />
       );
     }

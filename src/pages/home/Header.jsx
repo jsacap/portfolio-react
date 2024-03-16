@@ -33,18 +33,21 @@ const Home = () => {
     return (
         <>
             {!imageLoaded && (
-                <img
-                    src={tinyImage}
-                    alt='placeholder blurred image'
-                    style={{
-                        width: '100%',
-                        height: '100%', 
-                        objectFit: 'cover'                
-                    }}
-                />
+                <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
+                    <img
+                        src={tinyImage}
+                        alt='placeholder blurred image'
+                        style={{
+                            width: '100%',
+                            height: '100%', 
+                            objectFit: 'cover'                
+                        }}
+                    />
+                </div>
             )}
 
-            <div id="hero" className="home__hero route bg-image" style={imageLoaded ? { backgroundImage: `url(${bgImageUrl})` } : {}}>
+
+            <div id="hero" className="home__hero route bg-image" style={imageLoaded ? { backgroundImage: `url(${bgImageUrl})` } : {tinyImage}}>
                 <div className='overlay-itro'></div>
                 <div className='home__hero-content display-table'>
                     <div className='table-cell' data-aos='zoom-in-down' data-aos-once='true' data-aos-duration='5000' data-aos-easing='ease-in'>
