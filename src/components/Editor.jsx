@@ -1,16 +1,19 @@
-import ReactQuill from 'react-quill';
+import React, { lazy, Suspense } from 'react';
+const ReactQuill = lazy(() => import('react-quill'));
 import 'react-quill/dist/quill.snow.css';
-import '../components/Newsletter/Editor.css'; 
+import '../components/Newsletter/Editor.css';
 
 export default function Editor({ value, onChange }) {
   return (
     <div className="editor-container">
-      <ReactQuill
-        value={value}
-        onChange={onChange}
-        modules={Editor.modules}
-        formats={Editor.formats}
-      />
+      <Suspense fallback={<div>Loading Editor...</div>}>
+        <ReactQuill
+          value={value}
+          onChange={onChange}
+          modules={Editor.modules}
+          formats={Editor.formats}
+        />
+      </Suspense>
     </div>
   );
 }
