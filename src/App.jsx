@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from "./components/Login"; 
-import Home from './pages/home/Home.jsx';
-import { Navigation } from './components/Navigation';
-import Logout from './components/Logout';
-import PostPage from './components/PostPage';
-import PostsList from './components/PostList';
-import SinglePostPage from './components/SinglePostPage.jsx';
-import MarketBlog from './components/MarketBlog.jsx';
-import ArticlePage from './components/MarketBlogArticlePage.jsx';
-import './styles/styles.css';
-import './interceptor/Axios.jsx';
-import SandBox from './components/SandBox.jsx';
-import ContactPage from './components/ContactPage.jsx';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import "slick-carousel/slick/slick.css"; 
+import React, { useEffect, useState } from 'react';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import ContactPage from './components/ContactPage.jsx';
+import Login from "./components/Login";
+import Logout from './components/Logout';
+import MarketBlog from './components/MarketBlog.jsx';
+import ArticlePage from './components/MarketBlogArticlePage.jsx';
+import { Navigation } from './components/Navigation';
+import PostsList from './components/PostList';
+import PostPage from './components/PostPage';
+import SandBox from './components/SandBox.jsx';
+import SinglePostPage from './components/SinglePostPage.jsx';
+import './interceptor/Axios.jsx';
+import Home from './pages/home/Home.jsx';
+import './styles/styles.css';
 
 
-import TagsPage from './components/Tags/TagPage.jsx';
 import { ChakraProvider } from '@chakra-ui/react';
-import Subscriptions from './components/Newsletter/Subscriptions.jsx';
-import Subscribers from './components/Newsletter/Subscribers.jsx';
 import ComposeNewsletter from './components/Newsletter/ComposeNewsletter.jsx';
+import Subscribers from './components/Newsletter/Subscribers.jsx';
+import Subscriptions from './components/Newsletter/Subscriptions.jsx';
+import TagsPage from './components/Tags/TagPage.jsx';
 
 function App() {
   const [isLoggedin, setIsLoggedIn ] = useState(false);

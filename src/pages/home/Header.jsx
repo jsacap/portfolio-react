@@ -4,16 +4,14 @@ import Typed from 'typed.js';
 const Home = () => {
     const bgImageUrl = '/home/bgimage.png';
     const [imageLoaded, setImageLoaded] = useState(false);
-    const tinyImage = '/home/blur.png'
+    const tinyImage = '/home/blur.png';
 
     useEffect(() => {
         const img = new Image();
         img.onload = () => {
-            setTimeout(() => {
-                setImageLoaded(true); 
-            });
+            setImageLoaded(true); // This will trigger a re-render
         };
-        img.src = bgImageUrl;
+        img.src = bgImageUrl; // Start loading the main image
     }, [bgImageUrl]);
 
     useEffect(() => {
@@ -30,24 +28,15 @@ const Home = () => {
         };
     }, []);
 
+    // Correctly apply the tinyImage as a placeholder background image
+    // and switch to the main image once it has loaded.
+    const heroStyle = imageLoaded 
+        ? { backgroundImage: `url(${bgImageUrl})` } 
+        : { backgroundImage: `url(${tinyImage})` };
+
     return (
         <>
-            {!imageLoaded && (
-                <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
-                    <img
-                        src={tinyImage}
-                        alt='placeholder blurred image'
-                        style={{
-                            width: '100%',
-                            height: '100%', 
-                            objectFit: 'cover'                
-                        }}
-                    />
-                </div>
-            )}
-
-
-            <div id="hero" className="home__hero route bg-image" style={imageLoaded ? { backgroundImage: `url(${bgImageUrl})` } : {tinyImage}}>
+            <div id="hero" className="home__hero route bg-image" style={heroStyle}>
                 <div className='overlay-itro'></div>
                 <div className='home__hero-content display-table'>
                     <div className='table-cell' data-aos='zoom-in-down' data-aos-once='true' data-aos-duration='5000' data-aos-easing='ease-in'>
