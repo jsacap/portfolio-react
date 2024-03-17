@@ -9,9 +9,9 @@ const Home = () => {
     useEffect(() => {
         const img = new Image();
         img.onload = () => {
-            setImageLoaded(true); // This will trigger a re-render
+            setImageLoaded(true); 
         };
-        img.src = bgImageUrl; // Start loading the main image
+        img.src = bgImageUrl; 
     }, [bgImageUrl]);
 
     useEffect(() => {
@@ -28,11 +28,9 @@ const Home = () => {
         };
     }, []);
 
-    // Correctly apply the tinyImage as a placeholder background image
-    // and switch to the main image once it has loaded.
-    const heroStyle = imageLoaded 
-        ? { backgroundImage: `url(${bgImageUrl})` } 
-        : { backgroundImage: `url(${tinyImage})` };
+    const heroStyle = {
+        backgroundImage: `url(${imageLoaded ? bgImageUrl : tinyImage})`
+    };
 
     return (
         <>

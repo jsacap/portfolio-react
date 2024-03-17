@@ -548,6 +548,7 @@
     height: 100vh;
     position: relative;
     color: #ffff;
+    background-color: #040C18;
 }
 
 .home__hero .home__hero-content {
