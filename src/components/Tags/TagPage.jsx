@@ -1,12 +1,16 @@
-import React from 'react';
-import TagList from './TagList';
-import CreateTags from './CreateTags';
+import React, { lazy, Suspense } from 'react';
+const TagList = lazy(() => import('./TagList'));
+const CreateTags = lazy(() => import('./CreateTags'));
 
 const TagsPage = () => {
   return (
     <div>
-      <TagList />
-      
+      <Suspense fallback={<div>Loading Tags...</div>}>
+        <TagList />
+      </Suspense>
+      <Suspense fallback={<div>Loading Create Tag Form...</div>}>
+        <CreateTags />
+      </Suspense>
     </div>
   );
 };
